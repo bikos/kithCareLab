@@ -40,11 +40,14 @@ The `netlify.toml` file is the master configuration file that Netlify reads when
 2. **Publish Directory (`dist`)**: Tells Netlify which folder contains the final, compiled website to host.
 3. **Redirects**: Injects a rule (`from = "/*", to = "/index.html", status = 200`) that routes all traffic back to `index.html`. Because KithCare is a Single Page Application (SPA), this is strictly required to prevent 404 errors when a user directly navigates to or refreshes a URL like `/dashboard`.
 
-**2. Manual One-Click Deploy**
-If you need to forcefully push a manual update to Netlify straight from your local terminal, we have created a custom script that bundles the app and deploys the `dist` directory:
-```bash
-npm run deploy:web
-```
+**3. Environment Variables (Required!)**
+A common issue during deployment is a "blank white screen". Because Netlify builds the app on their secure servers, they do not have access to your local `.env` file. You **must** manually enter your Supabase credentials into the Netlify Dashboard before the app can render successfully.
+
+1. Go to your Netlify Dashboard -> **Site Configuration** -> **Environment variables**.
+2. Add the following keys exactly as they appear in your local `.env`:
+   - `EXPO_PUBLIC_SUPABASE_URL`
+   - `EXPO_PUBLIC_SUPABASE_ANON_KEY`
+3. Click **Save** and trigger a fresh deployment!
 
 *Routing Note:* KithCare uses Expo Router (a Single Page Application). To prevent 404 errors on direct URL visits, the build process injects a `public/_redirects` file to route all traffic securely to `index.html`.
 
