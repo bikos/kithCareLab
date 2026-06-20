@@ -13,6 +13,7 @@ export default function SetPasswordScreen() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const [user, setUser] = useState<User | null>(null);
     const router = useRouter();
@@ -158,7 +159,7 @@ export default function SetPasswordScreen() {
                             outlineColor="#E2E8F0"
                             activeOutlineColor="#0F172A"
                             returnKeyType="done"
-                            onSubmitEditing={handleSetPassword}
+                            onSubmitEditing={handleUpdatePassword}
                             left={<TextInput.Icon icon="lock-check-outline" color="#94A3B8" />}
                             theme={{ roundness: 12 }}
                         />
@@ -171,7 +172,7 @@ export default function SetPasswordScreen() {
 
                         <Button
                             mode="contained"
-                            onPress={handleSetPassword}
+                            onPress={handleUpdatePassword}
                             loading={loading}
                             disabled={loading}
                             style={styles.button}

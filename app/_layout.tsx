@@ -153,8 +153,6 @@ export default function RootLayout() {
             if (isInviteFlow) return;
 
             if (!segments.includes('care-team')) {
-                // EXPLICITLY ALLOW DEBUG SCREEN
-                if (segments[0] === 'debug-access') return;
 
                 // EXPLICITLY ALLOW SET PASSWORD SCREEN
                 if (isSetPassword) return;

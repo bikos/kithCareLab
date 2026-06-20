@@ -353,4 +353,23 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '600',
     },
+    successContainer: {
+        backgroundColor: '#F0FDF4',
+        borderRadius: 16,
+        padding: 24,
+        alignItems: 'center',
+        marginBottom: 24,
+        borderWidth: 1,
+        borderColor: '#86EFAC',
+    },
+    successIcon: {
+        fontSize: 48,
+        marginBottom: 16,
+    },
+    successTitle: {
+        fontSize: 20,
+        fontWeight: '800',
+        color: '#065F46',
+        marginBottom: 8,
+    },
 });
