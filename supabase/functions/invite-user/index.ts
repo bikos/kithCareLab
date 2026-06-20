@@ -34,7 +34,7 @@ serve(async (req) => {
     // Use passed URL, or ENV variable, or fallback to the custom production URL
     const frontendUrl = redirectTo 
       || Deno.env.get('FRONTEND_URL') 
-      || 'https://kithcarelab.com/dashboard'
+      || 'https://kithcarelab.com/auth/set-password'
 
     // Standard Supabase Invite
     const { data: user, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(email, {
