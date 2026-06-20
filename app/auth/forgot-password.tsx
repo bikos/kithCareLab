@@ -135,14 +135,22 @@ export default function ForgotPassword() {
         </View>
     );
 
-    const webDottedBackground = Platform.OS === 'web' ? {
-        backgroundImage: 'radial-gradient(#CBD5E1 1.5px, transparent 1.5px)',
-        backgroundSize: '32px 32px',
+    // Premium Light Glassmorphism Mesh Gradient
+    const meshBackground = Platform.OS === 'web' ? {
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundImage: `
+            radial-gradient(at 20% 0%, rgba(74, 144, 226, 0.25) 0px, transparent 60%),
+            radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.2) 0px, transparent 60%),
+            radial-gradient(at 50% 100%, rgba(20, 184, 166, 0.25) 0px, transparent 70%)
+        `,
+        backgroundColor: '#F1F5F9',
     } as any : {};
 
     if (isWide) {
         return (
-            <View style={[styles.containerWide, webDottedBackground]}>
+            <View style={styles.containerWide}>
+                {Platform.OS === 'web' && <View style={meshBackground} />}
                 <View style={styles.overlayWashWide}>
                     {brandingPanel}
                     {formPanel}
@@ -152,7 +160,8 @@ export default function ForgotPassword() {
     }
 
     return (
-        <View style={[styles.containerNarrow, webDottedBackground]}>
+        <View style={styles.containerNarrow}>
+            {Platform.OS === 'web' && <View style={meshBackground} />}
             <View style={styles.overlayWashNarrow}>
                 <KeyboardAvoidingView 
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
@@ -170,12 +179,12 @@ export default function ForgotPassword() {
 const styles = StyleSheet.create({
     containerWide: {
         flex: 1,
-        backgroundColor: '#FAFAFA',
+        backgroundColor: '#F1F5F9',
     },
     overlayWashWide: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: 'rgba(250, 250, 250, 0.6)',
+        backgroundColor: 'transparent',
     },
     brandingPanel: {
         flex: 1,
@@ -236,11 +245,11 @@ const styles = StyleSheet.create({
     },
     containerNarrow: {
         flex: 1,
-        backgroundColor: '#FAFAFA',
+        backgroundColor: '#F1F5F9',
     },
     overlayWashNarrow: {
         flex: 1,
-        backgroundColor: 'rgba(250, 250, 250, 0.6)',
+        backgroundColor: 'transparent',
     },
     keyboardView: {
         flex: 1,
@@ -271,19 +280,20 @@ const styles = StyleSheet.create({
         letterSpacing: -1,
     },
     formCard: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'rgba(255, 255, 255, 0.75)',
         borderRadius: 24,
         paddingHorizontal: 24,
         paddingVertical: 32,
         width: '100%',
         maxWidth: 440,
         borderWidth: 1,
-        borderColor: '#E2E8F0',
+        borderColor: 'rgba(255, 255, 255, 0.9)',
         shadowColor: '#0F172A',
         shadowOffset: { width: 0, height: 12 },
         shadowOpacity: 0.05,
         shadowRadius: 32,
         elevation: 4,
+        ...(Platform.OS === 'web' ? { backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' } : {} as any),
     },
     formTitle: {
         fontSize: 28,

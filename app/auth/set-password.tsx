@@ -65,15 +65,9 @@ export default function SetPasswordScreen() {
             }
 
             // CRITICAL FIX: The invite hash (#access_token=...&type=invite) paralyzes Expo Router
-            // We force a hard reload on Web to wipe the hash from the browser URL completely.
-            if (Platform.OS === 'web') {
-                window.location.href = targetPath;
-            } else {
-                router.replace(targetPath as any);
-            }
-
+            setSuccess(true);
         } catch (e: any) {
-            setError(e.message || 'Failed to update password. Please try again.');
+            setError(e.message || 'Failed to update password. Your link may have expired.');
         } finally {
             setLoading(false);
         }
@@ -106,116 +100,142 @@ export default function SetPasswordScreen() {
             )}
 
             <View style={styles.formCard}>
-                <Text style={styles.formTitle}>
-                    {userName ? `Welcome, ${userName}!` : 'Welcome to KithCare!'}
-                </Text>
+                <Text style={styles.formTitle}>Set New Password</Text>
                 <Text style={styles.formSubtitle}>
-                    {userEmail ? (
-                        <>Setting up account for <Text style={{ fontWeight: 'bold', color: '#0F172A' }}>{userEmail}</Text>{'\n'}</>
-                    ) : null}
-                    Please set your password to complete your account setup.
+                    {userName ? `Welcome, ${userName}. ` : ''}
+                    {userEmail ? `Setting password for ${userEmail}` : 'Create a secure password for your account.'}
                 </Text>
 
-                <TextInput
-                    id="set-password"
-                    label="New Password"
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                    mode="outlined"
-                    outlineColor="#E2E8F0"
-                    activeOutlineColor="#4A90E2"
-                    style={styles.input}
-                    returnKeyType="next"
-                    onSubmitEditing={() => confirmPasswordRef.current?.focus()}
-                    blurOnSubmit={false}
-                    left={<TextInput.Icon icon="lock-outline" color="#94A3B8" />}
-                    theme={{ roundness: 12 }}
-                />
-
-                <TextInput
-                    id="confirm-password"
-                    ref={confirmPasswordRef}
-                    label="Confirm Password"
-                    value={confirmPassword}
-                    onChangeText={setConfirmPassword}
-                    secureTextEntry
-                    mode="outlined"
-                    outlineColor="#E2E8F0"
-                    activeOutlineColor="#4A90E2"
-                    style={styles.input}
-                    returnKeyType="done"
-                    onSubmitEditing={handleUpdatePassword}
-                    left={<TextInput.Icon icon="lock-check-outline" color="#94A3B8" />}
-                    theme={{ roundness: 12 }}
-                />
-
-                {!!error && (
-                    <View style={styles.errorBox}>
-                        <HelperText type="error" visible style={styles.errorText}>
-                            {error}
-                        </HelperText>
+                {success ? (
+                    <View style={styles.successContainer}>
+                        <Text style={styles.successIcon}>✅</Text>
+                        <Text style={styles.successTitle}>Password Updated!</Text>
+                        <Text style={styles.successText}>
+                            Your password has been successfully set. You can now access your dashboard.
+                        </Text>
+                        <Button
+                            mode="contained"
+                            onPress={() => router.replace('/(tabs)')}
+                            style={styles.button}
+                            contentStyle={styles.buttonContent}
+                            buttonColor="#0F172A"
+                            labelStyle={styles.buttonLabel}
+                        >
+                            Go to Dashboard
+                        </Button>
                     </View>
-                )}
+                ) : (
+                    <>
+                        <TextInput
+                            label="New Password"
+                            value={password}
+                            onChangeText={setPassword}
+                            secureTextEntry={!showPassword}
+                            style={styles.input}
+                            mode="outlined"
+                            outlineColor="#E2E8F0"
+                            activeOutlineColor="#0F172A"
+                            returnKeyType="next"
+                            left={<TextInput.Icon icon="lock-outline" color="#94A3B8" />}
+                            right={
+                                <TextInput.Icon
+                                    icon={showPassword ? "eye-off" : "eye"}
+                                    color="#94A3B8"
+                                    onPress={() => setShowPassword(!showPassword)}
+                                />
+                            }
+                            theme={{ roundness: 12 }}
+                        />
 
-                <Button
-                    mode="contained"
-                    onPress={handleUpdatePassword}
-                    loading={loading}
-                    disabled={loading}
-                    style={styles.button}
-                    contentStyle={styles.buttonContent}
-                    buttonColor="#4A90E2"
-                    labelStyle={styles.buttonLabel}
-                >
-                    {loading ? 'Activating…' : 'Set Password & Activate'}
-                </Button>
+                        <TextInput
+                            label="Confirm Password"
+                            value={confirmPassword}
+                            onChangeText={setConfirmPassword}
+                            secureTextEntry={!showPassword}
+                            style={styles.input}
+                            mode="outlined"
+                            outlineColor="#E2E8F0"
+                            activeOutlineColor="#0F172A"
+                            returnKeyType="done"
+                            onSubmitEditing={handleSetPassword}
+                            left={<TextInput.Icon icon="lock-check-outline" color="#94A3B8" />}
+                            theme={{ roundness: 12 }}
+                        />
+
+                        {error ? (
+                            <HelperText type="error" visible={!!error} style={styles.errorText}>
+                                {error}
+                            </HelperText>
+                        ) : null}
+
+                        <Button
+                            mode="contained"
+                            onPress={handleSetPassword}
+                            loading={loading}
+                            disabled={loading}
+                            style={styles.button}
+                            contentStyle={styles.buttonContent}
+                            buttonColor="#0F172A"
+                            labelStyle={styles.buttonLabel}
+                        >
+                            {loading ? 'Saving…' : 'Save Password'}
+                        </Button>
+                    </>
+                )}
             </View>
         </View>
     );
 
+    // Premium Light Glassmorphism Mesh Gradient
+    const meshBackground = Platform.OS === 'web' ? {
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundImage: `
+            radial-gradient(at 20% 0%, rgba(74, 144, 226, 0.25) 0px, transparent 60%),
+            radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.2) 0px, transparent 60%),
+            radial-gradient(at 50% 100%, rgba(20, 184, 166, 0.25) 0px, transparent 70%)
+        `,
+        backgroundColor: '#F1F5F9',
+    } as any : {};
+
+    if (isWide) {
+        return (
+            <View style={styles.containerWide}>
+                {Platform.OS === 'web' && <View style={meshBackground} />}
+                <View style={styles.overlayWashWide}>
+                    {brandingPanel}
+                    {formPanel}
+                </View>
+            </View>
+        );
+    }
+
     return (
-        <ImageBackground source={heroBg} style={styles.container} resizeMode="cover">
-            <KeyboardAvoidingView 
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
-                style={styles.keyboardView}
-            >
-                {isWide ? (
-                    <View style={styles.containerWide}>
-                        <View style={styles.glassOverlayWide}>
-                            {brandingPanel}
-                            {formPanel}
-                        </View>
-                    </View>
-                ) : (
+        <View style={styles.containerNarrow}>
+            {Platform.OS === 'web' && <View style={meshBackground} />}
+            <View style={styles.overlayWashNarrow}>
+                <KeyboardAvoidingView 
+                    behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
+                    style={styles.keyboardView}
+                >
                     <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
                         {formPanel}
                     </ScrollView>
-                )}
-            </KeyboardAvoidingView>
-        </ImageBackground>
+                </KeyboardAvoidingView>
+            </View>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F8FAFC',
-    },
     containerWide: {
         flex: 1,
+        backgroundColor: '#F1F5F9',
     },
-    glassOverlayWide: {
+    overlayWashWide: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: 'rgba(15, 23, 42, 0.4)',
-    },
-    keyboardView: {
-        flex: 1,
-    },
-    scrollContent: {
-        flexGrow: 1,
-        justifyContent: 'center',
+        backgroundColor: 'transparent',
     },
     brandingPanel: {
         flex: 1,
@@ -226,44 +246,68 @@ const styles = StyleSheet.create({
     brandingLogo: {
         width: 120,
         height: 120,
-        marginBottom: 24,
+        borderRadius: 28,
+        marginBottom: 32,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 8,
     },
     brandingTitle: {
         fontSize: 48,
-        fontWeight: '800',
-        color: '#FFFFFF',
+        fontWeight: '900',
+        color: '#0F172A',
         marginBottom: 16,
+        letterSpacing: -1,
     },
     brandingTagline: {
-        fontSize: 20,
-        color: '#E2E8F0',
+        fontSize: 24,
+        fontWeight: '500',
+        color: '#475569',
         textAlign: 'center',
-        lineHeight: 28,
+        lineHeight: 34,
         marginBottom: 32,
     },
     brandingDivider: {
         width: 60,
-        height: 2,
-        backgroundColor: '#4A90E2',
+        height: 4,
+        backgroundColor: '#0F172A',
         marginBottom: 32,
+        borderRadius: 2,
     },
     brandingSubtext: {
         fontSize: 16,
-        color: '#94A3B8',
+        color: '#64748B',
         textAlign: 'center',
+        lineHeight: 24,
         maxWidth: 300,
     },
     formPanel: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 16,
+        padding: 16, 
     },
     formPanelNarrow: {
         paddingTop: 40,
         paddingBottom: 40,
         width: '100%',
-        paddingHorizontal: 16,
+        paddingHorizontal: 16, 
+    },
+    containerNarrow: {
+        flex: 1,
+        backgroundColor: '#F1F5F9',
+    },
+    overlayWashNarrow: {
+        flex: 1,
+        backgroundColor: 'transparent',
+    },
+    keyboardView: {
+        flex: 1,
+    },
+    scrollContent: {
+        flexGrow: 1,
+        justifyContent: 'center',
     },
     mobileHeader: {
         alignItems: 'center',
@@ -276,76 +320,89 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.15,
+        shadowOpacity: 0.1,
         shadowRadius: 12,
-        elevation: 5,
+        elevation: 2,
     },
     mobileHeaderTitle: {
         fontSize: 32,
-        fontWeight: '800',
-        color: '#FFFFFF',
-        letterSpacing: -0.5,
-        textShadowColor: 'rgba(0, 0, 0, 0.3)',
-        textShadowOffset: { width: 0, height: 2 },
-        textShadowRadius: 4,
+        fontWeight: '900',
+        color: '#0F172A',
+        letterSpacing: -1,
     },
     formCard: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'rgba(255, 255, 255, 0.75)',
         borderRadius: 24,
-        paddingHorizontal: 24,
+        paddingHorizontal: 24, 
         paddingVertical: 32,
         width: '100%',
         maxWidth: 440,
+        borderWidth: 1,
+        borderColor: 'rgba(255, 255, 255, 0.9)',
         shadowColor: '#0F172A',
         shadowOffset: { width: 0, height: 12 },
-        shadowOpacity: 0.08,
+        shadowOpacity: 0.05,
         shadowRadius: 32,
-        elevation: 10,
+        elevation: 4,
+        ...(Platform.OS === 'web' ? { backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' } : {} as any),
     },
     formTitle: {
         fontSize: 28,
-        fontWeight: '800',
+        fontWeight: '900',
         color: '#0F172A',
-        marginBottom: 12,
+        marginBottom: 8,
         textAlign: 'center',
         letterSpacing: -0.5,
     },
     formSubtitle: {
-        fontSize: 15,
+        fontSize: 16,
         color: '#64748B',
         marginBottom: 32,
         textAlign: 'center',
-        lineHeight: 22,
     },
     input: {
-        marginBottom: 20,
+        marginBottom: 16,
         backgroundColor: '#FFFFFF',
+        minHeight: 60,
         fontSize: 18,
-        height: 60,
-    },
-    errorBox: {
-        backgroundColor: '#FEF2F2',
-        borderRadius: 12,
-        padding: 12,
-        marginBottom: 20,
-        borderLeftWidth: 4,
-        borderLeftColor: '#EF4444',
     },
     errorText: {
+        textAlign: 'center',
+        marginBottom: 16,
         fontSize: 14,
-        color: '#B91C1C',
-        fontWeight: '500',
     },
     button: {
-        marginTop: 12,
-        borderRadius: 12,
+        marginTop: 8,
+        borderRadius: 30,
+        elevation: 0,
     },
     buttonContent: {
-        paddingVertical: 10,
+        height: 56,
     },
     buttonLabel: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#FFFFFF',
+    },
+    successContainer: {
+        alignItems: 'center',
+        paddingVertical: 20,
+    },
+    successIcon: {
+        fontSize: 48,
+        marginBottom: 16,
+    },
+    successTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#0F172A',
+        marginBottom: 8,
+    },
+    successText: {
         fontSize: 16,
-        fontWeight: '700',
-        letterSpacing: 0.5,
+        color: '#64748B',
+        textAlign: 'center',
+        marginBottom: 32,
+        lineHeight: 24,
     },
 });

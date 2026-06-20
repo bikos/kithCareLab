@@ -10,14 +10,21 @@ export default function Index() {
     const { width } = useWindowDimensions();
     const isWide = width > 768;
 
-    // Subtle dotted background for Web
-    const webDottedBackground = Platform.OS === 'web' ? {
-        backgroundImage: 'radial-gradient(#CBD5E1 1.5px, transparent 1.5px)',
-        backgroundSize: '32px 32px',
+    // Premium Light Glassmorphism Mesh Gradient
+    const meshBackground = Platform.OS === 'web' ? {
+        position: 'absolute',
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundImage: `
+            radial-gradient(at 20% 0%, rgba(74, 144, 226, 0.25) 0px, transparent 60%),
+            radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.2) 0px, transparent 60%),
+            radial-gradient(at 50% 100%, rgba(20, 184, 166, 0.25) 0px, transparent 70%)
+        `,
+        backgroundColor: '#F1F5F9',
     } as any : {};
 
     return (
-        <View style={[styles.container, webDottedBackground]}>
+        <View style={styles.container}>
+            {Platform.OS === 'web' && <View style={meshBackground} />}
             <View style={styles.contentWrapper}>
                 
                 {/* Header Navbar */}
@@ -101,20 +108,21 @@ export default function Index() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FAFAFA', // Egg white / off-white base
+        backgroundColor: '#F1F5F9',
     },
     contentWrapper: {
         flex: 1,
-        backgroundColor: 'rgba(250, 250, 250, 0.6)', // Slight wash over dots
+        backgroundColor: 'transparent',
     },
     navbar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingVertical: 20,
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: 'rgba(255, 255, 255, 0.6)',
         borderBottomWidth: 1,
-        borderBottomColor: '#E2E8F0',
+        borderBottomColor: 'rgba(255, 255, 255, 0.8)',
+        ...(Platform.OS === 'web' ? { backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' } : {} as any),
     },
     navbarWide: {
         paddingHorizontal: 60,
@@ -246,18 +254,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     featureCard: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
         padding: 40,
         borderRadius: 24,
         width: '100%',
         maxWidth: 360,
         borderWidth: 1,
-        borderColor: '#E2E8F0',
+        borderColor: 'rgba(255, 255, 255, 0.9)',
         shadowColor: '#0F172A',
         shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.05,
         shadowRadius: 20,
         elevation: 2,
+        ...(Platform.OS === 'web' ? { backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' } : {} as any),
     },
     iconWrapper: {
         width: 64,
