@@ -31,10 +31,10 @@ serve(async (req) => {
       throw new Error('Email is required')
     }
 
-    // Use passed URL, or ENV variable, or fallback to the Netlify production URL
+    // Use passed URL, or ENV variable, or fallback to the custom production URL
     const frontendUrl = redirectTo 
       || Deno.env.get('FRONTEND_URL') 
-      || 'https://kithcarelab.netlify.app/dashboard'
+      || 'https://kithcarelab.com/dashboard'
 
     // Standard Supabase Invite
     const { data: user, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(email, {
