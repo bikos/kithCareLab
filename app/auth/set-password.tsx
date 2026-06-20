@@ -16,17 +16,26 @@ export default function SetPasswordScreen() {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const [user, setUser] = useState<User | null>(null);
+    const [targetRoute, setTargetRoute] = useState('/(tabs)');
     const router = useRouter();
     const { width } = useWindowDimensions();
     const isWide = width > 768;
 
-    const confirmPasswordRef = useRef<any>(null);
-
     useEffect(() => {
+        // Check for expired links from Supabase URL Hash
+        if (Platform.OS === 'web' && typeof window !== 'undefined') {
+            if (window.location.hash.includes('error=access_denied')) {
+                setError('This invite link has expired or is invalid. Please request a new one.');
+            }
+        }
+
         // Fetch current user details
         supabase.auth.getSession().then(({ data: { session } }) => {
             if (session?.user) {
                 setUser(session.user);
+            } else if (Platform.OS === 'web' && !window.location.hash.includes('access_token')) {
+                // Not logged in and no token in URL
+                setError('No active session found. Your link may have expired.');
             }
         });
     }, []);
@@ -49,7 +58,7 @@ export default function SetPasswordScreen() {
             if (error) throw error;
 
             // Determine where to send the user based on role
-            let targetPath = '/(tabs)/';
+            let path = '/(tabs)';
             
             if (user) {
                 const { data: profile } = await supabase.from('profiles').select('id').eq('auth_id', user.id).single();
@@ -61,12 +70,12 @@ export default function SetPasswordScreen() {
                         .maybeSingle();
 
                     if (memberData?.role === 'admin') {
-                        targetPath = '/dashboard/';
+                        path = '/dashboard';
                     }
                 }
             }
 
-            // CRITICAL FIX: The invite hash (#access_token=...&type=invite) paralyzes Expo Router
+            setTargetRoute(path);
             setSuccess(true);
         } catch (e: any) {
             setError(e.message || 'Failed to update password. Your link may have expired.');
@@ -117,7 +126,7 @@ export default function SetPasswordScreen() {
                         </Text>
                         <Button
                             mode="contained"
-                            onPress={() => router.replace('/(tabs)')}
+                            onPress={() => router.replace(targetRoute as any)}
                             style={styles.button}
                             contentStyle={styles.buttonContent}
                             buttonColor="#0F172A"
