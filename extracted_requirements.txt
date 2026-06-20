@@ -1,0 +1,3473 @@
+                                                                                                       CareDune™
+                  A timeline you can trust—when the days get hard to track.
+Section 1 — Executive Summary
+CareDune™ Master Program, Platform, and Governance Document
+Fail Safe Technologies LLC — Community Engagement Program Offering
+
+1.1 Program Overview
+CareDune™ is a Fail Safe Technologies LLC Community Engagement Program offering designed to preserve
+continuity for individuals navigating dementia, cognitive change, mental health challenges, and other life-
+impacting conditions. CareDune™ is a person-centered platform built around a secure, account-based living
+timeline that captures day-to-day context in plain language and supports trusted collaboration across the real
+networks that provide care: individuals, families, care partners, advocates, community stakeholders, facilities,
+and—where appropriate—providers.
+CareDune™ exists to solve a blunt problem: continuity breaks. People change. Care teams rotate. Facilities
+hand off. Discharges happen. Important context disappears at the exact moment it matters most. CareDune™ is
+built to keep essential context intact across time, people, and places without turning daily life into a clinical
+record.
+
+1.2 What CareDune™ Delivers
+CareDune™ is designed to support practical continuity across settings, including home, independent/assisted
+living, nursing and memory care units, rehabilitation centers, and healthcare-adjacent partnerships. The platform
+is structured around five interoperable layers:
+    1. Personal Timeline Layer
+       A living timeline for the individual that captures daily context, preferences, and continuity-relevant
+       history through journaling and observational entries.
+    2. Care Coordination Layer
+       Role-aware participation supporting shift handoffs, rotating care networks, and continuity notes (e.g.,
+       appetite patterns, mood shifts, engagement, triggers, what helped).
+    3. Resource Layer
+       Localized resource organization for user-defined and community-curated supports (e.g., pharmacies,
+       support groups, day programs, transportation, faith-based supports, routine places).
+    4. Knowledge Layer (Aggregated, Anonymized, Moderated)
+       A separate informational layer that surfaces general FAQs, patterns, and continuity guidance derived
+       from aggregated, anonymized inputs and curated resources—moderated by Fail Safe Technologies LLC
+       and designated trusted partners.
+    5. Interoperability and Export Layer (FHIR-Positioned)
+       Export-first capabilities designed to support institutional workflows via human-readable transition
+
+Revision 1.0.0 – December 2025                                                                                              1
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+        summaries and structured exports. CareDune™ is built with FHIR-aligned positioning to support future
+        interoperability without requiring early live EHR integration.
+
+1.3 Intended Users and Institutional Fit
+CareDune™ is designed for the full reality of modern care—individuals and the people and organizations
+around them. The system supports these participant categories:
+    • Individuals who need a dignified, stable record of continuity and personal context
+    • Care partners who provide daily support and require tools that reduce information loss and friction
+    • Families and trusted persons who coordinate care, fill gaps, and serve escalation roles
+    • Advocates and community organizations who help people navigate resources and systems
+    • Facilities and programs that require shift-based continuity and reduced handoff errors
+    • Healthcare-adjacent partners and providers who need relevant context without EHR replacement
+      claims
+CareDune™ is structured so that different partners can adopt it without forcing a single operational model. It
+can operate as a consumer tool, a community pilot, a facility continuity system, or a partner program with
+governance controls appropriate to the environment.
+
+1.4 Clear Boundaries
+CareDune™ is intentionally direct about what it is and is not.
+CareDune™ is not:
+    • Emergency services, dispatch, or real-time monitoring
+    • A diagnostic tool, clinical decision support, or medical advice
+    • A replacement for electronic health record systems or clinical documentation
+    • A HIPAA Business Associate by default
+HIPAA / BAA posture:
+CareDune™ may support deployments involving regulated data only under a separate written agreement
+(including, where applicable, a Business Associate Agreement). Public-facing and consumer deployments are
+governed by platform Terms and Privacy policies, not implied institutional obligations.
+
+1.5 Governance, Trust, and Safety Posture
+CareDune™ is designed for sensitive contexts and vulnerable populations. The platform adopts a least-privilege
+participation model, explicit sharing controls, and governance mechanisms appropriate for institutional partners.
+Key governance principles include:
+    • Role-based access controls with scoped permissions
+
+Revision 1.0.0 – December 2025                                                                                              2
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Explicit consent and sharing boundaries, including revocation
+    • Auditability for organizational participation where applicable
+    • Moderated Knowledge Layer with editorial controls and escalation pathways
+    • Clear labeling distinguishing user-authored content from informational content
+    • Safety posture that supports appropriate escalation without presenting CareDune™ as an emergency
+      system
+CareDune™ is engineered to avoid false authority. It may provide informational guidance, but it does not
+replace human judgment, clinical care, or emergency protocols.
+
+1.6 Interoperability Positioning (Early FHIR, Export-First)
+CareDune™ is positioned to work alongside existing systems. The platform adopts an export-first approach and
+aligns its internal concepts to common HL7® FHIR® resources to support future interoperability. This
+positioning is intentional: it enables institutional readiness and data portability without burdening early pilots
+with complex integrations or overpromising interoperability before operational governance is established.
+In practical terms, CareDune™ prioritizes:
+    • Transition summaries that can be used during admissions, discharges, and transfers
+    • Structured exports that can support partner workflows and reporting
+    • A data model that can evolve toward integrations where warranted and contracted
+
+1.7 Deployment Strategy (Summary)
+CareDune™ is designed to scale by proving value in controlled deployments, then expanding responsibly. Near-
+term focus is a pilot-first strategy with clear evaluation metrics and partner governance. The program supports
+multiple deployment models:
+    • Individual subscription
+    • Community and nonprofit pilots
+    • Facility pilots (independent living, assisted living, nursing, memory care)
+    • Healthcare-adjacent continuity programs (discharge/transition focus)
+    • Grant-funded deployments at community, state, or national scale
+
+1.8 Outcomes and Value Proposition (Summary)
+CareDune™ targets measurable continuity improvements without pretending to fix everything.
+Expected outcomes include:
+    • Reduced information loss across handoffs and transitions
+    • Improved consistency of routines, preferences, and calming strategies
+Revision 1.0.0 – December 2025                                                                                              3
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Better coordination across rotating care networks
+    • Lower friction for families and staff trying to “get up to speed”
+    • More accessible resource navigation for individuals and advocates
+    • A safe, moderated knowledge base that reduces repeated reinvention of basic continuity practices
+CareDune™ is designed to be useful on day one and scalable over time. It does not require institutional
+integration to deliver value, but it is built to support institutional expectations when required.
+
+Section 2 — Background & Need Statement
+2.1 The Continuity Problem (Plainly Stated)
+Across the United States, care continuity fails not because people do not care, but because systems are not
+designed to preserve context over time. Individuals experiencing dementia, cognitive change, mental health
+challenges, or other life-impacting conditions often rely on rotating networks of support. Families step in and
+out. Care partners change. Facilities hand off shifts. Admissions and discharges occur under time pressure. Each
+transition introduces friction, loss of detail, and risk.
+The failure mode is consistent: what matters most is rarely written down in a place that follows the person.
+Preferences, routines, triggers, calming strategies, appetite patterns, communication styles, and daily
+observations are either undocumented or scattered across informal notes, memory, emails, binders, or siloed
+systems. The result is predictable—care becomes reactive instead of informed, repetitive instead of consistent,
+and stressful for everyone involved.
+
+2.2 Cognitive Change, Dementia, and Mental Health Realities
+Cognitive change and mental health challenges are not static conditions. They evolve. Capacity fluctuates.
+Communication abilities vary by time of day, environment, stress level, and familiarity. What worked last
+month may not work today. What failed yesterday may work tomorrow if context is understood.
+Traditional systems tend to capture clinical snapshots rather than lived experience. Yet continuity depends on
+the opposite: understanding patterns across days, weeks, and transitions. Small observations—changes in
+appetite, sleep, mood, engagement, or response to routine—often signal meaningful shifts long before a formal
+intervention is triggered. These observations are most often made by non-clinical caregivers and family
+members, yet they are rarely captured in a durable, shareable way.
+
+2.3 Caregiver Burden and Fragmentation
+Caregiving—formal and informal—is emotionally demanding and operationally complex. Care partners are
+expected to remember details, communicate consistently, and hand off context to others with little structural
+support. As conditions progress, the burden increases while capacity to document decreases.
+Fragmentation compounds the problem:
+    • Informal caregivers use notebooks or memory
+
+Revision 1.0.0 – December 2025                                                                                              4
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Facilities rely on shift reports that do not follow the individual
+    • Families receive partial updates after the fact
+    • Advocates and community organizations lack shared context
+    • Healthcare settings receive limited, time-compressed information during transitions
+This fragmentation increases caregiver stress, contributes to avoidable errors, and erodes trust across teams. It
+also creates inequity—those with strong advocates fare better than those without.
+
+2.4 Transition Failures as a Systemic Risk
+Transitions are the most vulnerable moments in any care journey. Hospital admissions, discharges, rehabilitation
+stays, moves between home and facility, or even a new caregiver entering the picture all introduce risk. Critical
+context is often lost precisely when time is short and decisions must be made quickly.
+Existing tools do not solve this problem:
+    • Clinical systems prioritize diagnosis, orders, and billing—not lived continuity.
+    • Consumer journaling tools lack role awareness, governance, and institutional credibility.
+    • Ad hoc solutions (binders, spreadsheets, emails) do not scale, audit, or transfer reliably.
+The result is repeated “starting over,” frustration for staff and families, and unnecessary distress for individuals.
+
+2.5 Community and Resource Navigation Gaps
+Beyond direct care, individuals and caregivers must navigate local resources: pharmacies, day programs,
+support groups, transportation, food access, faith-based supports, and routine places that anchor daily life. These
+resources are highly localized and change over time. They are rarely organized in a way that is personal,
+shareable, and easy to maintain.
+Community organizations and advocates often know what exists, but that knowledge is not systematically
+captured or shared across cases. The same questions are answered repeatedly. The same mistakes are relearned.
+Valuable local knowledge remains trapped in individual experience rather than becoming a shared asset.
+
+2.6 Why Existing Approaches Fall Short
+The continuity gap persists because most tools are built for one of two extremes:
+    • Highly clinical systems that are not designed for daily life, family participation, or non-clinical context
+    • Lightweight consumer tools that cannot support governance, moderation, or institutional use
+Few systems are designed to sit in the middle—serious enough for agencies and facilities, but accessible enough
+for individuals and families. Fewer still are designed with clear boundaries, explicit governance, and a realistic
+understanding of how care actually happens across time and roles.
+
+
+
+Revision 1.0.0 – December 2025                                                                                              5
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+2.7 The Need for a Purpose-Built Continuity Platform
+What is needed is not another medical system, nor another generic journaling app, but a purpose-built
+continuity platform that:
+    • Preserves lived context over time
+    • Supports rotating and layered roles
+    • Reduces friction during transitions
+    • Organizes local resources without centralizing control
+    • Enables shared learning without exposing personal data
+    • Operates within clear ethical, legal, and operational boundaries
+CareDune™ was conceived to meet this need directly and without pretense.
+
+Section 3 — Program Vision & Design Principles
+3.1 Program Vision
+CareDune™ is designed to preserve continuity of understanding in environments where continuity is routinely
+lost. The program’s vision is grounded in a simple but often unmet requirement: the essential context of a
+person’s daily life should follow them, regardless of who is providing support, where that support occurs, or
+how circumstances change over time.
+CareDune™ does not attempt to centralize care, automate judgment, or replace human relationships. Instead, it
+provides durable structure around the realities of caregiving, cognitive change, and community support—
+recognizing that people, roles, and environments evolve, often unpredictably. The platform exists to support
+clarity, consistency, and dignity across those changes.
+At its core, CareDune™ is a continuity system designed to operate alongside existing practices, not above them.
+
+
+3.2 Person-Centered Continuity
+CareDune™ is built around the individual, not the institution. The program treats the individual’s lived
+experience, preferences, routines, and responses as primary data for continuity—not as secondary annotations to
+clinical records.
+Key implications of this principle:
+    • The timeline is centered on the individual, not the caregiver or organization
+    • Entries emphasize observation and context, not diagnosis or instruction
+    • Language is plain, accessible, and human-readable
+    • Participation is invitation-based and consent-driven
+Revision 1.0.0 – December 2025                                                                                              6
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Person-centered continuity acknowledges that individuals may not always be able to advocate for themselves,
+but that their context should still be preserved accurately and respectfully.
+
+
+3.3 Dignity and Non-Medicalization
+CareDune™ is intentionally non-clinical by default. This is a deliberate design choice, not a limitation.
+Daily life is not a medical encounter. Over-medicalization of routine experiences can erode dignity, discourage
+participation, and create unnecessary fear or resistance. CareDune™ avoids clinical framing unless explicitly
+required by a governed deployment.
+As a result:
+    • The platform does not present itself as treatment, diagnosis, or decision support
+    • Observations are recorded descriptively, not evaluatively
+    • Structured prompts are optional and supportive, not prescriptive
+    • Users are not forced into medical terminology to capture meaningful information
+Where regulated or clinical contexts are involved, those boundaries are handled explicitly through deployment
+governance—not implied by the platform itself.
+
+
+3.4 Least-Privilege Participation
+CareDune™ adopts a least-privilege participation model. Access is granted intentionally, scoped narrowly, and
+revisable over time.
+This principle reflects two realities:
+    1. Not everyone involved in care needs the same information
+    2. Overexposure increases risk, confusion, and misuse
+Design implications include:
+    • Role-based access with default permission templates
+    • Explicit invitations rather than open access
+    • Clear separation between viewing, contributing, and managing
+    • Ability to revoke access without destabilizing the system
+Least-privilege participation supports privacy, trust, and institutional adoption while remaining flexible for real-
+world care networks.
+
+
+
+Revision 1.0.0 – December 2025                                                                                              7
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+3.5 Accessibility and Cognitive Load Awareness
+CareDune™ is designed for users who may be under stress, fatigued, grieving, or experiencing cognitive strain.
+The platform prioritizes clarity and reduces unnecessary cognitive load.
+Design considerations include:
+    • Simple language and clear labels
+    • Optional structure rather than mandatory forms
+    • Progressive disclosure of complexity
+    • Support for short, partial, or incomplete entries
+    • Interfaces that respect varying levels of comfort with technology
+Accessibility is treated as a baseline requirement, not a specialized feature.
+
+
+3.6 Continuity Across Time, Roles, and Places
+CareDune™ is explicitly designed to survive change.
+People’s needs change. Care teams rotate. Facilities change. Programs end. Families step in and out. The system
+assumes instability and designs for it.
+This principle informs:
+    • Shift handoff workflows
+    • Transition summaries
+    • Longitudinal timelines rather than episodic records
+    • Support for overlapping and evolving roles
+    • Persistence of context even when participation changes
+Continuity is treated as an operational requirement, not a convenience.
+
+
+3.7 Community Engagement and Shared Learning
+CareDune™ recognizes that much of what helps people is learned informally and locally. The program
+incorporates a Knowledge Layer to capture generalized insights without exposing individual data.
+This approach:
+    • Respects privacy while reducing repeated reinvention
+    • Allows community knowledge to scale responsibly
+
+Revision 1.0.0 – December 2025                                                                                              8
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Supports caregivers who are new, isolated, or unsupported
+    • Creates value beyond individual timelines
+Shared learning is moderated, anonymized, and explicitly informational. It does not replace professional
+judgment or individualized care.
+
+
+3.8 Fail Safe Technologies Design Ethos
+CareDune™ reflects Fail Safe Technologies LLC’s broader design philosophy: anticipate failure modes, reduce
+fragility, and build systems that remain useful under stress.
+This includes:
+    • Conservative claims and clear boundaries
+    • Explicit governance rather than implied authority
+    • Systems that degrade gracefully rather than collapse
+    • Preference for clarity over novelty
+    • Accountability for long-term outcomes, not just deployment
+CareDune™ is designed to be dependable, understandable, and adaptable—qualities required for programs
+operating in sensitive and high-trust environments.
+
+Section 4 — Scope, Boundaries, and Risk Delineation
+4.1 Purpose of Scope Definition
+CareDune™ operates in sensitive, high-trust environments involving vulnerable individuals, informal
+caregivers, community organizations, facilities, and healthcare-adjacent partners. In such environments,
+ambiguity creates risk. Clear scope and boundaries are therefore not optional—they are foundational.
+This section defines what CareDune™ is designed to do, what it is explicitly not designed to do, and how risk is
+anticipated, contained, and governed. These boundaries are intentional and enforceable. They protect
+individuals, partners, and Fail Safe Technologies LLC by preventing misuse, overreliance, and mission creep.
+
+
+4.2 In-Scope Capabilities
+CareDune™ is designed to support continuity, coordination, and contextual understanding through the
+following in-scope capabilities:
+    • Personal continuity timelines capturing daily context, preferences, routines, and observations
+    • Role-aware collaboration enabling trusted participants to contribute and review information
+      appropriate to their role
+
+Revision 1.0.0 – December 2025                                                                                              9
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Shift and transition support, including handoff notes and continuity summaries
+    • Localized resource organization, including user-defined and community-curated supports
+    • Optional structured observations (e.g., appetite, sleep, mood, engagement) to support pattern
+      awareness
+    • Anonymized, moderated Knowledge Layer providing general informational resources and continuity
+      guidance
+    • Export-first data access, including human-readable summaries and structured outputs for partner use
+    • Consent-driven sharing and revocation, with auditability where applicable
+These capabilities are designed to operate across consumer, community, facility, and healthcare-adjacent
+deployments without requiring clinical integration or regulatory assumptions by default.
+
+
+4.3 Explicitly Out-of-Scope Functions
+CareDune™ is not designed, marketed, or represented as any of the following:
+    • Emergency services, crisis response, dispatch, or monitoring
+    • Real-time location tracking or surveillance
+    • Medical diagnosis, treatment, or clinical decision support
+    • Medication management or prescribing
+    • Behavioral prediction, risk scoring, or automated escalation
+    • Replacement for electronic health records or clinical documentation systems
+    • Legal decision-making or conservatorship determination
+    • Guaranteed safety, outcomes, or risk prevention
+CareDune™ does not substitute for professional judgment, emergency protocols, or clinical care. Any use that
+attempts to treat the platform as such is outside the intended scope and prohibited by program governance and
+terms.
+
+
+4.4 Risk Categories and Management Philosophy
+CareDune™ acknowledges several inherent risk categories common to continuity and caregiving platforms. The
+program is designed to reduce risk where possible and to clearly delineate responsibility where risk cannot be
+eliminated.
+Primary risk categories include:
+    • Misinterpretation of informational content
+Revision 1.0.0 – December 2025                                                                                             10
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Overreliance on non-clinical observations
+    • Unauthorized or inappropriate access
+    • Context drift or outdated information
+    • Emotional distress resulting from sensitive content
+    • Institutional misuse beyond agreed deployment scope
+Risk is managed through conservative design, explicit boundaries, governance controls, and clear
+communication—not through implied guarantees.
+
+
+4.5 Informational vs. Directive Content
+All content within CareDune™ falls into one of two categories:
+    1. User-authored content
+       Observations, notes, and entries created by participants based on lived experience.
+    2. Informational content
+       General guidance, resources, and Knowledge Layer materials intended to support understanding.
+CareDune™ does not issue directives, instructions, or authoritative recommendations. Informational content is
+clearly labeled and framed to avoid confusion with professional advice. Users are consistently reminded that
+informational materials do not replace clinical, legal, or emergency guidance.
+
+
+4.6 Capacity, Consent, and Change Over Time
+CareDune™ is designed with the understanding that an individual’s capacity to participate, consent, or manage
+access may change over time. The platform supports:
+    • Delegated participation where appropriate
+    • Layered consent models aligned with deployment context
+    • Ability to add, modify, or revoke access
+    • Documentation of role changes and transitions
+CareDune™ does not independently determine capacity or authority. Such determinations remain the
+responsibility of individuals, families, and institutions operating under applicable laws and policies.
+
+
+4.7 Institutional Deployments and Regulated Contexts
+CareDune™ may be deployed in regulated or institutional contexts under specific written agreements. In such
+cases:
+Revision 1.0.0 – December 2025                                                                                             11
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Scope is defined contractually
+    • Data classification and handling requirements are explicit
+    • HIPAA and Business Associate obligations, if any, are governed by separate agreements
+    • Operational responsibilities are clearly assigned
+Absent such agreements, CareDune™ operates as a continuity and information platform governed by its public
+Terms, Privacy Policy, and Notice at Collection.
+
+
+4.8 Mission Creep Prevention
+CareDune™ intentionally resists feature expansion that blurs boundaries or introduces implicit authority.
+Decisions to expand scope are evaluated against:
+    • Alignment with continuity mission
+    • Impact on risk profile
+    • Regulatory implications
+    • Operational complexity for users
+    • Potential for misuse or misinterpretation
+This discipline ensures the platform remains dependable, understandable, and appropriate for sensitive
+environments over time.
+
+
+4.9 Accountability and Transparency
+Fail Safe Technologies LLC maintains accountability for the design, governance, and operation of CareDune™.
+This includes:
+    • Clear documentation of scope and limitations
+    • Transparent governance structures
+    • Responsiveness to identified risks or misuse
+    • Ongoing review of platform behavior and outcomes
+Accountability is treated as an operational requirement, not a marketing claim.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             12
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Section 5 — Role Taxonomy & Participation Framework
+5.1 Rationale for a Role-Based Framework
+CareDune™ is designed for environments where support is provided by layered, overlapping, and evolving
+networks of people and organizations. Traditional user models—limited to a single “owner” or undifferentiated
+collaborators—do not reflect how care actually happens.
+A role-based participation framework allows CareDune™ to:
+    • Preserve clarity as participants change over time
+    • Scope access and responsibilities appropriately
+    • Reduce risk from overexposure or misuse
+    • Support institutional governance without excluding families
+    • Maintain continuity even as capacity and authority shift
+Roles in CareDune™ are human-facing first. They are designed to be understandable during onboarding while
+remaining precise enough to support permissions, auditing, and policy enforcement.
+
+
+5.2 Core Role Categories (High-Level)
+CareDune™ organizes participation into the following core role categories. A single individual may occupy
+more than one role simultaneously or over time.
+    1. Individual (Person at the Center of Care)
+    2. Care Partner
+    3. Family Member / Trusted Person
+    4. Advocate / Community Support
+    5. Facility or Program Staff
+    6. Healthcare-Adjacent Participant
+    7. Conservator / Legal Representative (where applicable)
+    8. System and Program Governance Roles
+Each role category is defined below with scope, expectations, and participation boundaries.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             13
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+5.3 Individual (Person at the Center of Care)
+Definition
+The Individual is the person whose life context, preferences, and continuity the CareDune™ account exists to
+support.
+Primary Purpose
+    • Maintain a living record of daily life and personal context
+    • Express preferences, routines, and meaningful information
+    • Participate to the extent capacity allows
+Participation Characteristics
+    • May contribute directly or via assistance
+    • May invite trusted participants
+    • May delegate management where appropriate
+Capacity Considerations
+    • Participation may fluctuate over time
+    • The system supports reduced, assisted, or delegated participation
+    • CareDune™ does not assess capacity; it records participation contextually
+The Individual remains the conceptual center of the account, even when others contribute more actively.
+
+
+5.4 Care Partner
+Definition
+A Care Partner provides regular, hands-on support to the Individual. This role includes professional caregivers,
+aides, volunteers, or others directly involved in daily care.
+Primary Purpose
+    • Document observations relevant to continuity
+    • Support daily routines and transitions
+    • Communicate what worked, what did not, and what changed
+Typical Contributions
+    • Shift notes and handoff context
+    • Observations related to appetite, mood, engagement, sleep
+    • Notes on triggers, calming strategies, and preferences
+Revision 1.0.0 – December 2025                                                                                             14
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Boundaries
+    • Care Partners do not issue directives or diagnoses
+    • Contributions are observational and descriptive
+    • Access is scoped to continuity needs, not full account control
+
+
+5.5 Family Member / Trusted Person
+Definition
+Family members or trusted persons provide coordination, oversight, and continuity across settings and time.
+Primary Purpose
+    • Maintain broader context across days, weeks, and transitions
+    • Coordinate communication among participants
+    • Serve as escalation contacts where appropriate
+Typical Contributions
+    • Historical context and preferences
+    • Coordination notes during transitions
+    • Resource organization and planning
+This role often bridges informal and institutional environments and is critical during transitions.
+
+
+5.6 Advocate / Community Support
+Definition
+Advocates and community supports include social workers, nonprofit staff, faith-based partners, case managers,
+or other community stakeholders assisting with navigation, access, or support.
+Primary Purpose
+    • Assist with resource identification and coordination
+    • Support the Individual and family without assuming authority
+    • Provide continuity context across systems
+Participation Characteristics
+    • Limited, purpose-specific access
+    • Often time-bound or task-oriented
+
+Revision 1.0.0 – December 2025                                                                                             15
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Contributions focus on resources, logistics, and guidance
+Advocates do not replace family or caregivers and do not assume decision-making authority unless separately
+established.
+
+
+5.7 Facility or Program Staff
+Definition
+Facility or program staff include personnel operating within independent living, assisted living, nursing,
+memory care, rehabilitation, or similar settings.
+Primary Purpose
+    • Support shift-based continuity
+    • Reduce information loss during handoffs
+    • Maintain consistency in routines and responses
+Participation Characteristics
+    • Access is scoped to facility context and duration
+    • Contributions focus on continuity, not clinical records
+    • Participation aligns with organizational policies
+CareDune™ is not a replacement for internal facility systems; it supplements continuity across staff and shifts.
+
+
+5.8 Healthcare-Adjacent Participant
+Definition
+Healthcare-adjacent participants include discharge planners, care coordinators, or others who require continuity
+context without operating within CareDune™ as a clinical system.
+Primary Purpose
+    • Review relevant continuity summaries
+    • Support transitions and referrals
+    • Understand non-clinical context
+Participation Characteristics
+    • Read-only or limited contribution access
+    • Time-bound engagement
+    • Export-first interaction model
+Revision 1.0.0 – December 2025                                                                                             16
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+This role is intentionally constrained to avoid confusion with clinical systems.
+
+
+5.9 Conservator / Legal Representative (Where Applicable)
+Definition
+A Conservator or legal representative is an individual with formal authority established outside the CareDune™
+system.
+Primary Purpose
+    • Manage participation and access where legally required
+    • Act on behalf of the Individual within legal scope
+Important Boundary
+CareDune™ does not establish or validate legal authority. Documentation and verification remain external to
+the platform and are governed by deployment agreements and applicable law.
+
+
+5.10 System and Program Governance Roles
+Definition
+Governance roles are held by Fail Safe Technologies LLC and designated trusted partners responsible for
+platform integrity, moderation, and policy enforcement.
+Responsibilities
+    • Knowledge Layer moderation
+    • Safety escalation handling
+    • Policy enforcement
+    • Institutional coordination
+These roles do not participate in individual care decisions.
+
+
+5.11 Role Transitions and Overlap
+CareDune™ assumes roles will change. The platform supports:
+    • Overlapping roles (e.g., family member and care partner)
+    • Time-bound access
+    • Progressive delegation
+    • Graceful removal without data loss
+
+Revision 1.0.0 – December 2025                                                                                             17
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                               DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Role transitions are logged contextually to preserve continuity.
+
+
+5.12 Onboarding Language and Framing
+Onboarding emphasizes:
+    • Respect for roles and boundaries
+    • Clear expectations of participation
+    • Non-clinical posture
+    • Consent and revocation clarity
+Participants are explicitly informed:
+    • What their role allows
+    • What it does not
+    • How to escalate concerns appropriately
+
+
+5.13 Role-Based Risk Reduction
+The role framework is a primary risk control mechanism. By aligning access and expectations to real-world
+responsibilities, CareDune™ reduces:
+    • Accidental overreach
+    • Misinterpretation of content
+    • Privacy exposure
+    • Institutional liability
+
+
+Section 6 — User Experience & Workflow Architecture
+6.1 Design Intent
+CareDune™ user experience is designed to support continuity under real-world conditions: time pressure,
+emotional stress, rotating participants, and uneven technical comfort. The platform favors clarity over novelty
+and consistency over customization. Workflows are intentionally simple, repeatable, and tolerant of partial
+participation.
+The UX architecture reflects three core truths:
+    1. Care is rarely linear
+    2. Participants change frequently
+Revision 1.0.0 – December 2025                                                                                             18
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    3. Context is lost when workflows are brittle
+CareDune™ workflows are therefore role-aware, interruption-tolerant, and resilient to change.
+
+
+6.2 Onboarding Workflow
+Objective: Establish trust, clarify roles, and enable immediate value without cognitive overload.
+Key characteristics:
+    • Progressive onboarding (not all at once)
+    • Plain-language explanations
+    • Clear boundary-setting
+    • Immediate continuity benefit
+Onboarding steps (high-level):
+    1. Account creation and individual identification
+    2. Role selection and explanation
+    3. Initial trusted participant invitations
+    4. Baseline context capture (preferences, routines, key contacts)
+    5. Orientation to timeline and contribution norms
+Onboarding language emphasizes that CareDune™ is a continuity tool—not a clinical system or emergency
+service.
+
+
+6.3 Individual Experience Workflow
+Objective: Enable the Individual to participate at their own pace and capacity.
+Core interactions:
+    • Viewing the timeline
+    • Adding short entries (text, voice, or assisted)
+    • Reviewing familiar information (preferences, routines)
+    • Identifying trusted participants
+Design considerations:
+    • Entries may be brief or incomplete
+    • Participation may be episodic
+Revision 1.0.0 – December 2025                                                                                             19
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Assistance may be required
+    • Control and dignity are preserved wherever possible
+CareDune™ accommodates declining or fluctuating capacity without penalizing the Individual for reduced
+engagement.
+
+
+6.4 Care Partner Daily Workflow
+Objective: Support consistent, calm, and informed care while reducing documentation burden.
+Typical flow:
+    1. Begin shift: review latest timeline entries and handoff notes
+    2. Observe and support daily routines
+    3. Record key observations (optional structured prompts)
+    4. Document what helped and what did not
+    5. End shift: concise handoff summary
+Supported observations include:
+    • Appetite and hydration
+    • Mood and engagement
+    • Sleep and activity
+    • Triggers and calming strategies
+    • Notable changes or concerns
+Entries are descriptive, not evaluative. CareDune™ avoids forced checklists while allowing optional structure.
+
+
+6.5 Family and Trusted Person Workflow
+Objective: Maintain broader continuity across time, settings, and participants.
+Typical interactions:
+    • Reviewing longitudinal patterns
+    • Coordinating transitions
+    • Updating resource lists
+    • Communicating context to new participants
+    • Managing escalation contacts
+Revision 1.0.0 – December 2025                                                                                             20
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+This role often serves as the continuity anchor during transitions between home, facility, and healthcare settings.
+
+
+6.6 Advocate and Community Support Workflow
+Objective: Enable efficient resource navigation and continuity support without overreach.
+Typical interactions:
+    • Identifying local resources
+    • Adding or updating resource information
+    • Reviewing relevant context for navigation assistance
+    • Providing guidance notes tied to specific needs
+Participation is scoped, time-bound, and task-focused.
+
+
+6.7 Facility and Shift-Based Workflow
+Objective: Reduce information loss during staff rotation and handoffs.
+Workflow characteristics:
+    • Shift-start context review
+    • Shift-end handoff notes
+    • Consistent routine reinforcement
+    • Reduced reliance on verbal-only communication
+CareDune™ supplements—not replaces—facility systems by preserving person-centered context across shifts.
+
+
+6.8 Transition and Handoff Workflow
+Objective: Preserve essential context during high-risk transitions.
+Supported transitions include:
+    • Home to facility
+    • Facility to hospital or rehabilitation
+    • Hospital discharge
+    • Program entry or exit
+Transition support includes:
+    • Human-readable continuity summaries
+Revision 1.0.0 – December 2025                                                                                             21
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Key preferences and routines
+    • Known triggers and effective strategies
+    • Priority contacts and escalation paths
+Exports are designed to be understandable without platform access.
+
+
+6.9 Escalation and Priority Contact Workflow
+Objective: Support appropriate escalation without positioning CareDune™ as an emergency system.
+Design principles:
+    • Priority contacts defined by the account
+    • Sequential escalation options
+    • Clear labeling of non-emergency status
+    • Explicit direction to follow local emergency protocols when required
+CareDune™ does not monitor, dispatch, or intervene.
+
+
+6.10 End-of-Life and Capacity Decline Considerations
+Objective: Maintain dignity and continuity as circumstances change.
+CareDune™ supports:
+    • Reduced participation without data loss
+    • Increased delegation
+    • Preservation of historical context
+    • Respectful closure when appropriate
+The platform does not dictate end-of-life decisions or care paths.
+
+
+6.11 Workflow Resilience and Failure Tolerance
+CareDune™ workflows are designed to tolerate:
+    • Missed entries
+    • Partial participation
+    • Inconsistent usage
+    • Temporary disengagement
+Revision 1.0.0 – December 2025                                                                                             22
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Continuity is maintained through accumulation over time rather than rigid compliance.
+
+
+6.12 UX Governance and Evolution
+Workflow changes are evaluated against:
+    • Impact on cognitive load
+    • Risk of misinterpretation
+    • Alignment with scope boundaries
+    • Institutional adoption considerations
+UX evolution prioritizes reliability and clarity over novelty.
+
+
+Section 7 — Data Model & Information Architecture
+7.1 Design Objectives
+The CareDune™ data model is designed to preserve continuity without turning lived experience into a clinical
+or surveillance record. Information architecture prioritizes durability, clarity, and restraint. Data is structured
+enough to support pattern recognition and exports, yet flexible enough to capture real-world context in plain
+language.
+The guiding objectives are:
+    • Preserve essential context over time
+    • Support multiple contributors without conflict
+    • Avoid false precision or implied authority
+    • Enable portability and institutional trust
+    • Minimize data collection to what is necessary
+
+
+7.2 Core Information Domains
+CareDune™ organizes information into discrete but interconnected domains. Each domain has defined purpose,
+scope, and handling rules.
+Primary domains include:
+    1. Individual Profile and Preferences
+    2. Continuity Timeline
+    3. Observations and Structured Signals
+Revision 1.0.0 – December 2025                                                                                             23
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    4. Roles, Permissions, and Participation
+    5. Resources and Local Context
+    6. Knowledge Layer Contributions
+    7. Exports, Summaries, and Audit Context
+Separation of domains reduces misuse and simplifies governance.
+
+
+7.3 Individual Profile and Baseline Context
+The Individual Profile establishes baseline continuity information that remains relatively stable over time.
+Typical elements include:
+    • Preferred name and communication style
+    • Daily routines and meaningful activities
+    • Sensitivities, triggers, and calming strategies
+    • Accessibility needs
+    • Priority contacts and escalation order
+This profile is editable with appropriate permissions and is intended to reduce repetitive rediscovery during
+transitions.
+
+
+7.4 Continuity Timeline
+The Continuity Timeline is the core of the CareDune™ platform.
+Characteristics:
+    • Chronological, append-only by default
+    • Supports narrative entries, attachments, and metadata
+    • Tolerates gaps and partial entries
+    • Preserves historical context without overwriting
+Timeline entries are descriptive records of lived experience, not judgments or conclusions. They may be
+authored by different roles, each clearly attributed.
+
+
+7.5 Observations and Structured Signals
+CareDune™ supports optional structured observations to surface patterns without enforcing rigid reporting.
+
+Revision 1.0.0 – December 2025                                                                                             24
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Common observation categories include:
+    • Appetite and hydration
+    • Sleep and activity
+    • Mood and engagement
+    • Responses to routines or environments
+Structured signals are:
+    • Optional
+    • Role-scoped
+    • Non-diagnostic
+    • Designed for trend awareness, not decision-making
+Narrative context is always preserved alongside structured inputs.
+
+
+7.6 Roles, Permissions, and Attribution
+Every data element in CareDune™ is associated with:
+    • An author role
+    • A timestamp
+    • A visibility scope
+This ensures transparency and prevents ambiguity about source or intent. Role attribution is preserved even
+when participants change or access is revoked.
+
+
+7.7 Resource and Local Context Data
+Resource data includes user-defined and community-curated information relevant to daily life and support.
+Examples include:
+    • Pharmacies, clinics, and service providers
+    • Day programs and support groups
+    • Transportation and food access
+    • Routine places and meaningful locations
+Resource entries are:
+    • Clearly labeled as informational
+Revision 1.0.0 – December 2025                                                                                             25
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Editable with scoped permissions
+    • Subject to moderation where shared
+Localization is treated as contextual support, not authoritative referral.
+
+
+7.8 Knowledge Layer Contributions (Structural View)
+The Knowledge Layer is structurally separate from individual timelines.
+Key characteristics:
+    • No direct identifiers
+    • Aggregated and anonymized inputs
+    • Moderated prior to publication
+    • Informational framing only
+This separation ensures that individual data does not leak into shared knowledge artifacts.
+
+
+7.9 Exports and Transition Summaries
+CareDune™ supports export-first interaction models.
+Export formats include:
+    • Human-readable summaries for transitions
+    • Structured data extracts aligned to common standards
+    • Time-bounded views scoped to purpose
+Exports are generated intentionally and do not imply ongoing data feeds unless contractually established.
+
+
+7.10 Auditability and Data Integrity
+CareDune™ maintains integrity through:
+    • Immutable historical records
+    • Attribution and timestamps
+    • Logged access where appropriate
+    • Clear differentiation between original and modified content
+Auditability supports institutional confidence without imposing surveillance on participants.
+
+Revision 1.0.0 – December 2025                                                                                             26
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+7.11 Data Minimization and Retention
+Data collection is purpose-driven. CareDune™ avoids collecting:
+    • Real-time monitoring data
+    • Passive behavioral tracking
+    • Unnecessary identifiers
+Retention policies are defined by deployment context and governed by explicit agreements and public policies.
+
+
+7.12 Information Architecture Governance
+Changes to data structures are evaluated against:
+    • Continuity value
+    • Risk of misuse
+    • Regulatory implications
+    • Interoperability alignment
+The data model evolves conservatively to preserve trust and stability.
+
+Section 8 — Knowledge Layer Architecture
+8.1 Purpose and Rationale
+The CareDune™ Knowledge Layer exists to address a recurring failure in caregiving ecosystems: valuable
+experiential knowledge is repeatedly rediscovered in isolation. Families, care partners, advocates, and
+community organizations encounter similar challenges, yet lessons learned remain fragmented, informal, and
+non-transferable.
+The Knowledge Layer is designed to responsibly surface generalizable insights without exposing individual
+data. It transforms repeated, anonymized patterns into accessible informational resources while preserving strict
+boundaries between personal timelines and shared knowledge.
+This layer is informational, not directive, and is intentionally separated from individual care records.
+
+
+8.2 Clear Separation from Individual Data
+The Knowledge Layer is architecturally and operationally isolated from individual accounts.
+Key separations include:
+    • No direct identifiers or account references
+    • No direct linkage back to individual timelines
+Revision 1.0.0 – December 2025                                                                                             27
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • No automatic publishing of individual entries
+    • No ability to infer individual participation
+Data enters the Knowledge Layer only after aggregation, anonymization, and moderation. This separation is
+foundational to trust, privacy, and institutional adoption.
+
+
+8.3 Sources of Knowledge Inputs
+Knowledge Layer content may be derived from multiple controlled sources:
+    1. Aggregated Observational Patterns
+       General trends observed across many accounts (e.g., common triggers, effective routines) after de-
+       identification.
+    2. Curated Resource Contributions
+       Community-vetted resources and informational materials relevant to continuity and caregiving.
+    3. Expert and Partner Submissions
+       Contributions from trusted organizations, advisors, and subject-matter experts operating under
+       governance agreements.
+    4. Publicly Available Reference Materials
+       Carefully selected public-domain or licensed informational resources.
+No single account or contributor can independently populate the Knowledge Layer.
+
+
+8.4 Anonymization and Aggregation Controls
+Anonymization is treated as a multi-step process, not a single action.
+Controls include:
+    • Removal of direct identifiers
+    • Suppression of rare or unique combinations
+    • Aggregation thresholds before inclusion
+    • Temporal smoothing to prevent traceability
+    • Manual review for contextual re-identification risk
+Fail Safe Technologies LLC maintains responsibility for these controls and reviews them periodically.
+
+
+8.5 Moderation and Editorial Governance
+All Knowledge Layer content is moderated prior to publication.
+Revision 1.0.0 – December 2025                                                                                             28
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Moderation responsibilities include:
+    • Accuracy and clarity review
+    • Tone and framing consistency
+    • Boundary enforcement (informational vs. directive)
+    • Removal of unsafe or misleading content
+    • Escalation of sensitive issues
+Moderation is performed by Fail Safe Technologies LLC and, where appropriate, designated trusted partners
+under formal agreements.
+
+
+8.6 Informational Framing and Disclaimers
+Knowledge Layer content is explicitly framed as informational.
+Content characteristics:
+    • Plain-language explanations
+    • Contextual examples without prescription
+    • Clear disclaimers regarding professional advice
+    • Emphasis on variability and individual differences
+No content presents itself as diagnosis, treatment, or authoritative instruction.
+
+
+8.7 Contributor Safeguards and Boundaries
+Participants contributing indirectly to the Knowledge Layer are protected through:
+    • No attribution to individuals
+    • No feedback loops identifying source accounts
+    • No incentives that encourage oversharing
+    • No visibility into aggregation thresholds
+Participation in CareDune™ does not imply consent for identifiable knowledge publication.
+
+
+8.8 Knowledge Categories
+The Knowledge Layer is organized into thematic categories aligned with continuity needs, such as:
+    • Communication strategies
+Revision 1.0.0 – December 2025                                                                                             29
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Routine stability and transitions
+    • Appetite and engagement patterns
+    • Environmental considerations
+    • Caregiver well-being
+    • Community resource navigation
+Categories are designed to evolve conservatively.
+
+
+8.9 Use in Institutional and Community Contexts
+The Knowledge Layer supports:
+    • Training and onboarding
+    • Program consistency
+    • Community education
+    • Grant reporting and justification
+It does not replace internal policies, clinical protocols, or organizational training materials.
+
+
+8.10 Risk Management and Misuse Prevention
+The Knowledge Layer introduces unique risks, including misinterpretation and overgeneralization. These risks
+are mitigated through:
+    • Conservative language
+    • Moderation and periodic review
+    • Clear labeling and disclaimers
+    • Removal or revision of problematic content
+Fail Safe Technologies LLC reserves the authority to modify or withdraw Knowledge Layer content if risk is
+identified.
+
+
+8.11 Knowledge Lifecycle Management
+Knowledge Layer content is subject to:
+    • Periodic review and validation
+    • Retirement of outdated materials
+
+Revision 1.0.0 – December 2025                                                                                             30
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Versioning and revision tracking
+    • Feedback mechanisms for partners
+Knowledge is treated as a living asset with governance oversight.
+
+
+8.12 Accountability
+Fail Safe Technologies LLC maintains accountability for the Knowledge Layer’s design, governance, and
+operation. This accountability includes transparency around scope, limitations, and corrective actions.
+
+Section 9 — Interoperability Strategy (FHIR-Aligned)
+9.1 Interoperability Philosophy
+CareDune™ is designed to coexist with existing systems, not compete with or replace them. Interoperability is
+treated as a capability to be exercised deliberately, not a default integration posture. The program prioritizes
+continuity, clarity, and governance over technical novelty.
+The guiding philosophy is export-first, integration-when-appropriate.
+This approach allows CareDune™ to deliver immediate value in consumer, community, and facility
+deployments while remaining institution-ready for environments that require structured data exchange.
+
+
+9.2 Why Export-First
+Most continuity failures occur outside clinical systems and before formal integration is possible or appropriate.
+Export-first design ensures that:
+    • Information can move with the individual during transitions
+    • Partners can access continuity context without new system dependencies
+    • Governance remains explicit and contract-driven
+    • Early pilots are not delayed by integration complexity
+Exports are intentionally human-readable by default and structured where needed. CareDune™ does not assume
+persistent data feeds, background synchronization, or automated ingestion by external systems.
+
+
+9.3 FHIR-Aligned, Not FHIR-Dependent
+CareDune™ aligns its internal concepts to HL7® FHIR® resources where appropriate, while avoiding
+premature claims of compliance or integration.
+This distinction is deliberate.
+FHIR-aligned means:
+Revision 1.0.0 – December 2025                                                                                             31
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Internal data concepts map cleanly to common FHIR resources
+    • Structured exports can be transformed into FHIR representations
+    • Future integrations can be implemented without re-architecting the platform
+FHIR-dependent systems often assume clinical context, regulatory posture, and operational controls that
+CareDune™ does not impose by default.
+CareDune™ maintains alignment without inheriting unintended obligations.
+
+
+9.4 Conceptual Mapping (Illustrative)
+CareDune™ data concepts are designed to map conceptually to standard interoperability models. Examples
+include:
+    • Individual profile → Patient-aligned context (non-clinical)
+    • Observational entries → Observation (descriptive, non-diagnostic)
+    • Continuity summaries → DocumentReference or Composition-style artifacts
+    • Resource listings → Service-related references (informational)
+These mappings are illustrative and do not imply direct equivalence or clinical validity.
+
+
+9.5 Transition and Handoff Use Cases
+Interoperability is most critical during transitions. CareDune™ supports:
+    • Admissions and discharges
+    • Home-to-facility and facility-to-home transitions
+    • Program entry and exit
+    • Care team rotation
+In these scenarios, CareDune™ provides:
+    • Concise continuity summaries
+    • Clearly scoped context views
+    • Optional structured extracts
+These outputs are designed to be consumed by humans first and systems second.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             32
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                               DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+9.6 Institutional Readiness Without Overcommitment
+CareDune™ signals readiness for institutional environments by:
+    • Using structured, standards-aware data models
+    • Maintaining auditability and attribution
+    • Supporting explicit data-sharing agreements
+    • Avoiding implied integration guarantees
+Actual integrations are:
+    • Scoped
+    • Contractual
+    • Purpose-limited
+    • Governed
+This protects both partners and the program from unintentional data exposure or regulatory drift.
+
+
+9.7 What CareDune™ Explicitly Avoids
+CareDune™ does not:
+    • Claim to be an EHR or clinical system
+    • Auto-sync with healthcare systems by default
+    • Assume HIPAA obligations without agreement
+    • Generate clinical alerts or automated decisions
+    • Perform background data ingestion
+Avoidance of these patterns is a risk-management decision, not a technical limitation.
+
+
+9.8 Future Integration Pathways
+As CareDune™ matures, integration pathways may include:
+    • Structured export APIs
+    • Standards-based document exchange
+    • Partner-specific interfaces
+    • Research and evaluation pipelines (where governed)
+Each pathway is evaluated against:
+Revision 1.0.0 – December 2025                                                                                              33
+Fail Safe Technologies LLC - CareDune™                                                              FSTLLC – BUSINESS PROTECTED
+
+                                        Confidential work product of Fail Safe Technologies LLC
+                           CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Continuity value
+    • Governance overhead
+    • Regulatory implications
+    • Partner readiness
+No integration proceeds without explicit authorization and safeguards.
+
+
+9.9 Governance of Interoperability
+Interoperability decisions are governed by Fail Safe Technologies LLC in consultation with partners and
+advisors. Governance includes:
+    • Review of proposed data exchanges
+    • Risk assessment
+    • Contractual controls
+    • Periodic reevaluation
+Interoperability is treated as an operational responsibility, not a marketing feature.
+
+
+9.10 Summary
+CareDune™’s interoperability strategy is intentionally conservative, practical, and institution-aware. By
+prioritizing export-first design and early FHIR alignment—without premature integration claims—the platform
+supports continuity today while remaining adaptable for regulated environments tomorrow.
+
+Section 10 — Privacy, Security & Compliance Framework
+10.1 Design Imperative
+CareDune™ operates in contexts involving sensitive personal information, vulnerable populations, and high-
+trust relationships. Privacy, security, and compliance are therefore treated as design imperatives, not post hoc
+controls. The framework described here governs how data is collected, accessed, protected, shared, and retained
+across all CareDune™ deployments.
+This framework is intentionally conservative. It favors explicit governance, clear boundaries, and enforceable
+controls over implied assurances or marketing claims.
+
+
+10.2 Data Classification
+CareDune™ classifies data based on purpose and sensitivity to ensure appropriate handling and risk controls.
+Primary data classes include:
+Revision 1.0.0 – December 2025                                                                                             34
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Routine continuity data: daily observations, preferences, routines, and contextual notes
+    • Sensitive personal context: narrative entries that may reference mental health, cognitive change, or
+      personal circumstances
+    • Media attachments: photos, audio, or documents provided intentionally by users
+    • Operational metadata: timestamps, role attribution, and access logs
+    • Knowledge Layer artifacts: aggregated, anonymized informational content
+CareDune™ avoids collecting real-time monitoring data, passive behavioral tracking, or unnecessary
+identifiers.
+
+
+10.3 Consent Lifecycle Management
+Consent in CareDune™ is explicit, revocable, and contextual.
+Key principles:
+    • Consent is granted through clear role invitations
+    • Access scopes are defined at the role level
+    • Consent may be modified or revoked at any time
+    • Changes in access do not retroactively alter historical records
+CareDune™ does not infer consent. Authority and delegation remain the responsibility of participants and
+institutions operating under applicable law.
+
+
+10.4 Access Controls and Least Privilege
+Access to data is governed by role-based access controls aligned with the participation framework defined in
+Section 5.
+Controls include:
+    • Scoped permissions by role
+    • Separation of viewing, contributing, and managing functions
+    • Time-bound access for temporary participants
+    • Administrative controls for institutional deployments
+Least-privilege access reduces risk of accidental exposure, misuse, and role confusion.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             35
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+10.5 Security Safeguards
+CareDune™ employs layered technical and operational safeguards appropriate to the sensitivity of the data
+handled.
+Safeguards include:
+    • Encrypted data in transit and at rest
+    • Secure authentication and session management
+    • Regular dependency and vulnerability review
+    • Segmentation of environments
+    • Controlled administrative access
+Security controls are reviewed and updated as part of ongoing platform operations.
+
+
+10.6 Auditability and Accountability
+CareDune™ maintains auditability sufficient to support institutional trust without imposing unnecessary
+surveillance on participants.
+Audit features include:
+    • Role attribution on entries
+    • Timestamping of actions
+    • Access logging where appropriate
+    • Separation between user activity and system administration
+Auditability is applied proportionally and governed by deployment context.
+
+
+10.7 Incident Response and Breach Handling
+Fail Safe Technologies LLC maintains an incident response posture aligned with responsible data stewardship.
+Incident response includes:
+    • Identification and containment procedures
+    • Assessment of scope and impact
+    • Notification obligations as required by law or contract
+    • Corrective actions and review
+CareDune™ does not guarantee the absence of incidents but commits to transparent and timely response.
+
+Revision 1.0.0 – December 2025                                                                                             36
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+
+10.8 HIPAA, BAA, and Regulated Deployments
+CareDune™ is not a HIPAA-covered entity or Business Associate by default.
+    • Consumer and community deployments are governed by public Terms, Privacy Policy, and Notice at
+      Collection
+    • Regulated deployments involving Protected Health Information (PHI) require a separate written
+      agreement
+    • Business Associate Agreements (BAAs), where applicable, are executed explicitly and scoped narrowly
+Absent such agreements, CareDune™ does not assume HIPAA obligations.
+
+
+10.9 Regulatory Posture
+CareDune™ is designed to operate nationally within the United States while respecting applicable federal and
+state requirements.
+The platform:
+    • Avoids jurisdiction-specific assumptions unless contractually required
+    • Supports partner compliance without assuming partner obligations
+    • Maintains documentation appropriate for institutional review
+Regulatory alignment is treated as a governance activity, not a static claim.
+
+
+10.10 Data Retention and Deletion
+Data retention policies are purpose-driven and deployment-specific.
+General principles:
+    • Retain data only as long as necessary for continuity and governance
+    • Support account closure and data deletion requests consistent with policy
+    • Preserve audit records as required by law or agreement
+Retention schedules are documented and enforced operationally.
+
+
+10.11 Third-Party and Partner Controls
+Where CareDune™ relies on third-party services or partners, Fail Safe Technologies LLC maintains oversight
+through:
+Revision 1.0.0 – December 2025                                                                                             37
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Vendor risk assessment
+    • Contractual safeguards
+    • Limitation of data exposure
+    • Periodic review
+Third-party access does not override platform governance.
+
+
+10.12 Transparency and User Trust
+CareDune™ prioritizes transparency regarding:
+    • What data is collected
+    • How it is used
+    • Who may access it
+    • How concerns are addressed
+Transparency is essential to sustaining trust in sensitive environments.
+
+
+10.13 Compliance Governance
+Privacy, security, and compliance governance are ongoing responsibilities. Fail Safe Technologies LLC reviews
+policies, controls, and practices periodically and updates them as needed based on operational experience,
+regulatory changes, and partner feedback.
+
+Section 11 — Deployment Models & Partner Scenarios
+11.1 Deployment Philosophy
+CareDune™ is designed to be deployable across diverse environments without altering its core purpose,
+governance, or ethical posture. The platform does not impose a single operational model. Instead, it adapts to
+partner context while maintaining consistent boundaries around scope, data use, and authority.
+Deployment decisions are guided by three principles:
+    • Preserve person-centered continuity
+    • Match governance to operational reality
+    • Avoid overreach or implied authority
+This flexibility allows CareDune™ to operate effectively as a consumer tool, a community program, a facility
+resource, or a healthcare-adjacent continuity platform.
+
+
+Revision 1.0.0 – December 2025                                                                                             38
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+11.2 Individual and Family Deployment
+Overview
+CareDune™ may be deployed directly to individuals and families as a subscription-based or sponsored offering.
+Primary objectives
+    • Preserve daily context and preferences
+    • Reduce caregiver burden
+    • Improve continuity during informal transitions
+Characteristics
+    • Individual-centered account ownership
+    • Invitation-based participation
+    • Public Terms, Privacy Policy, and Notice at Collection govern use
+    • No institutional reporting obligations
+This model prioritizes accessibility and ease of adoption without regulatory complexity.
+
+
+11.3 Community and Nonprofit Deployment
+Overview
+Community organizations, nonprofits, faith-based groups, and advocacy programs may deploy CareDune™ as a
+continuity support tool for populations they serve.
+Primary objectives
+    • Support navigation of local resources
+    • Reduce fragmentation across services
+    • Improve continuity for underserved populations
+Characteristics
+    • Program-sponsored access
+    • Role-based participation aligned with organizational function
+    • Limited reporting and outcome summaries
+    • No assumption of clinical authority
+This model is well-suited for grant-funded and community engagement initiatives.
+
+
+
+Revision 1.0.0 – December 2025                                                                                             39
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+11.4 Assisted Living, Nursing, and Memory Care Deployment
+Overview
+Facilities may deploy CareDune™ to improve shift continuity, reduce handoff errors, and preserve person-
+centered context.
+Primary objectives
+    • Improve consistency across rotating staff
+    • Preserve routines and preferences
+    • Support family and care partner collaboration
+Characteristics
+    • Facility-scoped access
+    • Role-limited staff participation
+    • Integration with existing facility workflows (not replacement)
+    • Governance aligned with facility policies
+CareDune™ supplements internal systems by preserving continuity that often falls outside clinical
+documentation.
+
+
+11.5 Hospital and Rehabilitation Deployment (Healthcare-Adjacent)
+Overview
+Hospitals, rehabilitation centers, and healthcare-adjacent partners may use CareDune™ to support transitions,
+discharges, and continuity planning.
+Primary objectives
+    • Improve information quality during transitions
+    • Reduce information loss
+    • Support discharge planning and referrals
+Characteristics
+    • Export-first interaction
+    • Time-bound access
+    • Optional structured summaries
+    • Regulated data handled only under explicit agreement
+CareDune™ does not position itself as an EHR or clinical system in these environments.
+Revision 1.0.0 – December 2025                                                                                             40
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+
+11.6 Public Sector and Grant-Funded Deployment
+Overview
+CareDune™ may be deployed through public-sector programs, state or local initiatives, or federally funded
+pilots.
+Primary objectives
+    • Improve continuity for vulnerable populations
+    • Support community resilience
+    • Generate non-identifying program insights
+Characteristics
+    • Formal governance agreements
+    • Defined reporting metrics
+    • Strong privacy and scope controls
+    • Knowledge Layer contributions aligned with grant requirements
+This model supports SAMHSA-adjacent, aging services, and community health initiatives.
+
+
+11.7 Hybrid and Multi-Partner Deployments
+CareDune™ supports hybrid deployments involving multiple partner types.
+Examples include
+    • Hospital-to-community transitions
+    • Facility-family-advocate coordination
+    • Faith-based programs integrated with clinical referrals
+Hybrid deployments require clear delineation of roles, responsibilities, and data boundaries, documented
+contractually.
+
+
+11.8 Partner Responsibilities
+Regardless of deployment model, partners are responsible for:
+    • Adhering to defined scope and use policies
+    • Training participants appropriately
+
+Revision 1.0.0 – December 2025                                                                                             41
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Escalating issues through agreed channels
+    • Respecting consent and access boundaries
+CareDune™ does not assume operational responsibility for partner workflows.
+
+
+11.9 Evaluation and Adaptation
+Deployments are evaluated periodically to assess:
+    • Continuity outcomes
+    • Participant experience
+    • Governance effectiveness
+    • Risk exposure
+Findings inform program refinement and scaling decisions.
+
+
+11.10 Summary
+CareDune™’s deployment flexibility enables broad adoption without compromising governance or purpose. By
+adapting to partner context while preserving clear boundaries, the platform supports continuity across diverse
+environments and scales responsibly.
+
+
+Section 12 — Pilot Program Design & Evaluation
+12.1 Purpose of Pilot Programs
+Pilot programs are the primary mechanism through which CareDune™ validates real-world fit, governance
+assumptions, and continuity impact. Pilots are intentionally structured to test workflows, not to prove
+perfection. They are designed to surface friction early, establish shared expectations with partners, and generate
+defensible evidence for scaling decisions.
+CareDune™ pilots prioritize learning over speed and governance over optics.
+
+
+12.2 Pilot Objectives
+Each pilot deployment is defined by a limited set of explicit objectives, typically including:
+    • Validation of continuity workflows across defined roles
+    • Assessment of onboarding clarity and role comprehension
+    • Measurement of information retention across transitions
+Revision 1.0.0 – December 2025                                                                                             42
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Evaluation of participant experience and burden
+    • Verification of governance and consent controls
+    • Identification of operational and technical gaps
+Objectives are documented prior to pilot initiation and reviewed during closeout.
+
+
+12.3 Pilot Scope Definition
+Pilot scope is intentionally narrow and documented in writing.
+Scope elements include:
+    • Target population and size
+    • Participating roles and organizations
+    • Duration of pilot period
+    • Data categories in use
+    • Reporting and evaluation expectations
+Out-of-scope activities are explicitly identified to prevent mission creep.
+
+
+12.4 Site and Partner Readiness Criteria
+Before initiating a pilot, CareDune™ evaluates partner readiness to ensure responsible deployment.
+Readiness criteria typically include:
+    • Clear point of contact and program sponsor
+    • Alignment on scope and boundaries
+    • Willingness to train participants
+    • Agreement on data handling and reporting
+    • Defined escalation and support pathways
+Pilots are deferred or declined if readiness thresholds are not met.
+
+
+12.5 Onboarding and Training for Pilots
+Pilot onboarding emphasizes clarity, consistency, and restraint.
+Training elements include:
+    • Role-specific onboarding materials
+Revision 1.0.0 – December 2025                                                                                             43
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Plain-language scope and boundary review
+    • Demonstration of continuity workflows
+    • Guidance on appropriate documentation tone
+    • Escalation and support procedures
+Training is designed to reduce misuse and unrealistic expectations.
+
+
+12.6 Pilot Operations and Support
+During the pilot period, CareDune™ provides defined operational support appropriate to deployment context.
+Operational considerations include:
+    • Designated support channels
+    • Issue triage and escalation
+    • Monitoring for misuse or boundary drift
+    • Periodic check-ins with partner leads
+Support is structured to inform evaluation without interfering with natural workflows.
+
+
+12.7 Evaluation Metrics
+Evaluation metrics are selected to reflect continuity impact rather than clinical outcomes.
+Common evaluation domains include:
+    • Reduction in repeated information discovery
+    • Consistency of routines and preferences across shifts
+    • Quality of handoff information during transitions
+    • Participant confidence and clarity
+    • Caregiver and staff burden perception
+Metrics are qualitative and quantitative where appropriate and are documented prior to pilot launch.
+
+
+12.8 Data Collection and Analysis
+Pilot evaluation data is collected in a manner consistent with privacy and governance commitments.
+Approach includes:
+    • Aggregated, non-identifying analysis
+Revision 1.0.0 – December 2025                                                                                             44
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Separation from individual timelines
+    • Use of surveys, interviews, and usage patterns
+    • Avoidance of clinical inference
+Findings are used to inform program refinement and partner decision-making.
+
+
+12.9 Reporting and Communication
+Pilot reporting is structured, transparent, and purpose-driven.
+Reports typically include:
+    • Summary of objectives and scope
+    • Observed outcomes and challenges
+    • Governance and workflow observations
+    • Recommendations for iteration or scaling
+Reports avoid overstated conclusions and clearly articulate limitations.
+
+
+12.10 Decision Gates and Scaling Criteria
+At pilot closeout, CareDune™ and the partner evaluate readiness to proceed.
+Decision outcomes may include:
+    • Scale within current partner environment
+    • Extend pilot with refinements
+    • Pause or discontinue deployment
+    • Redefine scope or use case
+Scaling decisions are made deliberately and documented.
+
+
+12.11 Ethical Oversight During Pilots
+CareDune™ maintains ethical oversight throughout pilot deployments.
+Oversight includes:
+    • Monitoring for participant distress
+    • Ensuring consent remains valid
+    • Reviewing Knowledge Layer contributions
+Revision 1.0.0 – December 2025                                                                                             45
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Adjusting workflows to reduce harm
+Ethical considerations are treated as operational requirements.
+
+
+12.12 Summary
+Pilot programs are the foundation of CareDune™’s responsible growth strategy. By defining scope, governance,
+and evaluation criteria up front, pilots generate meaningful insight while protecting participants, partners, and
+the program itself.
+
+
+Section 13 — Advisory Council & Governance
+13.1 Purpose of Governance
+CareDune™ operates at the intersection of personal continuity, caregiving, community engagement, and
+institutional participation. Governance is therefore required to ensure the program remains aligned with its
+mission, ethical obligations, and operational boundaries as it scales.
+Governance within CareDune™ is designed to advise, guide, and safeguard, not to direct care or assume
+operational control over partner organizations. Authority is intentionally limited and clearly delineated.
+
+
+13.2 Advisory Council Purpose and Scope
+The CareDune™ Advisory Council serves as a multidisciplinary body providing strategic guidance, ethical
+oversight, and subject-matter insight to Fail Safe Technologies LLC.
+The Advisory Council:
+    • Advises on program direction and evolution
+    • Reviews ethical considerations and risk areas
+    • Informs Knowledge Layer governance and moderation standards
+    • Provides perspective on institutional, community, and caregiver needs
+The Advisory Council does not:
+    • Provide clinical or medical direction
+    • Make individual care decisions
+    • Operate or manage deployments
+    • Override partner governance structures
+This distinction preserves independence, reduces liability, and protects participant trust.
+
+Revision 1.0.0 – December 2025                                                                                             46
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+13.3 Advisory Council Composition
+Advisory Council membership is intentionally multidisciplinary and may include representation from:
+    • Caregiving and lived-experience perspectives
+    • Community and nonprofit leadership
+    • Aging services and dementia support
+    • Mental and behavioral health domains
+    • Healthcare-adjacent administration
+    • Privacy, ethics, and compliance expertise
+    • Technology and interoperability expertise
+Members are selected for judgment, experience, and integrity—not affiliation.
+
+
+13.4 Membership Terms and Expectations
+Advisory Council members serve defined terms and operate under written charters.
+Expectations include:
+    • Acting in an advisory capacity only
+    • Maintaining confidentiality
+    • Disclosing conflicts of interest
+    • Participating in periodic reviews and discussions
+Membership does not imply endorsement of all platform features or deployments.
+
+
+13.5 Ethical Oversight Function
+The Advisory Council plays a critical role in identifying and mitigating ethical risks, including:
+    • Overreach or misuse of the platform
+    • Misinterpretation of informational content
+    • Boundary erosion between informational and clinical domains
+    • Risks to vulnerable populations
+Recommendations are documented and considered by Fail Safe Technologies LLC as part of ongoing
+governance.
+
+
+Revision 1.0.0 – December 2025                                                                                             47
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+13.6 Knowledge Layer Governance Interface
+The Advisory Council may review Knowledge Layer policies and emerging themes to ensure:
+    • Informational framing remains appropriate
+    • Content reflects diverse contexts and experiences
+    • Moderation standards remain conservative and defensible
+The Council does not moderate individual submissions or access identifiable data.
+
+
+13.7 Governance Authority and Accountability
+Ultimate authority and accountability for CareDune™ rests with Fail Safe Technologies LLC.
+Fail Safe Technologies LLC:
+    • Defines and enforces platform policies
+    • Approves deployments and integrations
+    • Manages legal, privacy, and security obligations
+    • Responds to identified risks and incidents
+Advisory input informs decisions but does not replace organizational responsibility.
+
+
+13.8 Partner and Institutional Governance Alignment
+CareDune™ governance is designed to complement—not conflict with—partner governance structures.
+Alignment principles include:
+    • Respect for partner policies and procedures
+    • Clear delineation of responsibilities
+    • Contractual clarity for regulated deployments
+    • Avoidance of implied authority or oversight
+This ensures CareDune™ can operate within diverse institutional environments without imposing external
+control.
+
+
+13.9 Documentation and Transparency
+Governance activities are documented to support transparency and institutional trust.
+Documentation may include:
+Revision 1.0.0 – December 2025                                                                                             48
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Advisory charters
+    • Policy reviews and updates
+    • Risk assessments and mitigation actions
+    • Program evolution rationale
+Transparency reinforces accountability without exposing sensitive deliberations.
+
+
+13.10 Review and Evolution of Governance
+Governance structures are reviewed periodically to ensure they remain appropriate as CareDune™ evolves.
+Adjustments may be made to:
+    • Advisory composition
+    • Review cadence
+    • Policy scope
+    • Escalation pathways
+Governance evolves deliberately and conservatively.
+
+
+13.11 Summary
+The CareDune™ Advisory Council and governance framework provide disciplined oversight without
+operational overreach. By clearly separating advisory guidance from execution and maintaining accountability
+within Fail Safe Technologies LLC, CareDune™ preserves trust, ethical clarity, and institutional readiness.
+
+Section 14 — Outcome Measurement Framework
+14.1 Measurement Philosophy
+CareDune™ measures outcomes to understand whether continuity is improving—not to predict behavior,
+diagnose conditions, or evaluate clinical performance. Outcome measurement is designed to be responsible,
+proportionate, and honest about what can and cannot be inferred from continuity data.
+This framework avoids surrogate medical claims, automated scoring, or risk stratification. Measurement exists
+to support learning, improvement, and accountability—not surveillance or judgment.
+
+
+14.2 Purpose of Measurement
+Outcome measurement within CareDune™ serves four primary purposes:
+    1. Program learning — Identify what improves continuity and what does not
+Revision 1.0.0 – December 2025                                                                                             49
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    2. Partner evaluation — Support informed decisions about scaling or adaptation
+    3. Accountability — Demonstrate responsible stewardship to funders and institutions
+    4. Governance oversight — Detect misuse, drift, or unintended consequences
+Measurement is always contextualized and never presented as deterministic.
+
+
+14.3 Domains of Measurement
+CareDune™ evaluates outcomes across defined domains aligned with its mission.
+Primary domains include:
+    • Continuity of information across time
+    • Continuity across roles and participants
+    • Continuity during transitions
+    • Participant clarity and confidence
+    • Caregiver and staff burden perception
+    • Resource navigation effectiveness
+Each domain is assessed using multiple indicators rather than single-point metrics.
+
+
+14.4 Quantitative Indicators (Non-Clinical)
+Quantitative indicators are descriptive and operational, not predictive.
+Examples include:
+    • Frequency of documented handoff notes
+    • Presence of continuity summaries during transitions
+    • Reduction in repeated discovery of preferences or routines
+    • Participation consistency across shifts or participants
+    • Timeliness of updates during transitions
+These indicators reflect system usage and continuity practices, not outcomes of care.
+
+
+14.5 Qualitative Indicators
+Qualitative indicators capture experience, clarity, and perceived value.
+Methods include:
+Revision 1.0.0 – December 2025                                                                                             50
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Participant surveys
+    • Structured interviews
+    • Partner feedback sessions
+    • Observational assessments during pilots
+Qualitative insights are essential for understanding context that metrics alone cannot capture.
+
+
+14.6 What Is Explicitly Not Measured
+To avoid misuse and overreach, CareDune™ explicitly does not measure:
+    • Clinical outcomes or health status
+    • Disease progression
+    • Risk scores or predictive indicators
+    • Compliance with care plans
+    • Performance evaluation of individuals or staff
+These exclusions are documented to prevent misinterpretation by partners or funders.
+
+
+14.7 Knowledge Layer Contribution Metrics
+Knowledge Layer outcomes are measured separately from individual timelines.
+Appropriate indicators include:
+    • Volume of moderated informational content
+    • Diversity of topic coverage
+    • Utilization of knowledge resources
+    • Partner-reported usefulness
+No individual account metrics are derived from Knowledge Layer participation.
+
+
+14.8 Aggregation and Privacy Safeguards
+All outcome measurement uses aggregated, non-identifying data.
+Safeguards include:
+    • Minimum aggregation thresholds
+    • Suppression of small sample sizes
+Revision 1.0.0 – December 2025                                                                                             51
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Separation from operational access logs
+    • Review for re-identification risk
+Measurement activities comply with privacy commitments and deployment agreements.
+
+
+14.9 Reporting Practices
+Outcome reporting is conservative, contextual, and transparent.
+Reports include:
+    • Description of scope and methodology
+    • Limitations and assumptions
+    • Observed patterns, not conclusions
+    • Recommendations for iteration
+Reports avoid claims that exceed the data.
+
+
+14.10 Use in Grant and Public-Sector Contexts
+For grant-funded deployments, outcome measurement supports:
+    • Program accountability
+    • Continuous improvement
+    • Responsible use of public funds
+Measurement frameworks are aligned with grant requirements without inflating claims or overstating impact.
+
+
+14.11 Continuous Improvement Loop
+Outcome measurement feeds directly into program evolution.
+Findings may inform:
+    • UX refinements
+    • Training adjustments
+    • Governance updates
+    • Knowledge Layer moderation priorities
+This feedback loop is documented and reviewed periodically.
+
+Revision 1.0.0 – December 2025                                                                                             52
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+14.12 Ethical Considerations
+Outcome measurement is reviewed through an ethical lens to ensure it does not:
+    • Incentivize oversharing
+    • Create pressure to document excessively
+    • Introduce surveillance dynamics
+    • Undermine trust
+Ethical oversight is part of governance review.
+
+
+14.13 Summary
+CareDune™’s outcome measurement framework supports learning and accountability without compromising
+privacy, dignity, or scope boundaries. By measuring continuity rather than care outcomes, the program
+maintains integrity and institutional credibility.
+
+Section 15 — Roadmap & Evolution
+15.1 Roadmap Philosophy
+The CareDune™ roadmap is governed by restraint, evidence, and accountability. Features are not added to
+chase trends or perceived market pressure. Each stage of evolution must demonstrably strengthen continuity,
+reduce risk, and preserve the platform’s non-clinical posture.
+Roadmap decisions are informed by pilot findings, partner feedback, governance review, and ethical
+considerations. Expansion without discipline is treated as a risk, not a success.
+
+
+15.2 Near-Term Priorities (Stabilization and Proof)
+The near-term focus of CareDune™ is operational stability and proof of value.
+Primary objectives include:
+    • Hardening core continuity workflows
+    • Refining onboarding clarity and role comprehension
+    • Validating transition summaries and exports
+    • Establishing moderation cadence for the Knowledge Layer
+    • Completing pilot deployments with documented outcomes
+During this phase, feature scope remains deliberately narrow. Usability, reliability, and governance correctness
+take precedence over expansion.
+
+Revision 1.0.0 – December 2025                                                                                             53
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+15.3 MVP Consolidation
+The MVP phase is not treated as a prototype but as a deployable baseline.
+Key characteristics of the consolidated MVP include:
+    • Stable timeline and observation workflows
+    • Role-based participation functioning as designed
+    • Export-first transition summaries in regular use
+    • Knowledge Layer operating with moderation controls
+    • Documented policies and support processes
+Only once the MVP demonstrates consistent continuity value does the program advance.
+
+
+15.4 Medium-Term Evolution (Institutional Readiness)
+Medium-term evolution focuses on institutional readiness and controlled scale.
+Potential areas of maturation include:
+    • Expanded reporting and evaluation tooling
+    • Partner-configurable deployment templates
+    • Enhanced resource localization and mapping
+    • Improved assistive capture methods (e.g., voice-assisted journaling)
+    • Formalized training and certification materials for partners
+All enhancements are evaluated against governance, privacy, and scope boundaries.
+
+
+15.5 Knowledge Layer Maturation
+As participation grows, the Knowledge Layer evolves conservatively.
+Planned maturation includes:
+    • Expanded topical coverage based on validated patterns
+    • Improved categorization and discoverability
+    • Periodic review and retirement of outdated content
+    • Increased involvement of trusted partners under governance agreements
+The Knowledge Layer remains informational and moderated at all stages.
+
+Revision 1.0.0 – December 2025                                                                                             54
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+15.6 Interoperability Expansion (When Warranted)
+Future interoperability enhancements are contingent on demonstrated need and readiness.
+Possible pathways include:
+    • Structured export APIs
+    • Standards-based document exchange
+    • Partner-specific integration pilots
+    • Research and evaluation interfaces (where governed)
+No interoperability expansion proceeds without explicit partner agreements, risk assessment, and governance
+approval.
+
+
+15.7 AI, NLP, and Assistive Capabilities
+CareDune™ may incorporate conversational and assistive technologies to reduce documentation burden and
+improve accessibility.
+Guardrails include:
+    • No autonomous decision-making
+    • No clinical inference or prediction
+    • Clear labeling of assistive outputs
+    • Human review and control
+Assistive technologies are evaluated for bias, misuse risk, and accessibility impact before deployment.
+
+
+15.8 Long-Term Vision
+Long-term, CareDune™ aims to serve as a trusted continuity layer across communities and institutions—
+without becoming a clinical system.
+The program’s success is measured not by feature breadth but by:
+    • Durability of use
+    • Trust across participants
+    • Responsible institutional adoption
+    • Preservation of dignity and context
+Scale is pursued only where governance and accountability can be maintained.
+
+Revision 1.0.0 – December 2025                                                                                             55
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+15.9 Governance of Evolution
+All roadmap changes are subject to governance review.
+Review considerations include:
+    • Alignment with mission and scope
+    • Risk and compliance implications
+    • Impact on vulnerable populations
+    • Operational sustainability
+Governance ensures evolution strengthens the platform rather than diluting it.
+
+
+15.10 Summary
+CareDune™ evolves deliberately. By prioritizing stability, learning, and ethical oversight, the program avoids
+the failure modes common to technology deployed in sensitive environments. Growth is a consequence of trust
+earned—not features added.
+
+Appendix A — Roles & Permission Matrices
+A.1 Purpose and Governance Context
+This appendix defines the roles and permissions framework that operationalizes the participation model
+described in Section 5. The matrix is designed to balance continuity, privacy, and accountability while
+accommodating diverse deployment contexts.
+Permissions are:
+    • Role-based, not person-based
+    • Least-privilege by default
+    • Explicitly scoped and revocable
+    • Context-aware (deployment and duration)
+The matrices below are reference standards. Final permissions are enforced through platform configuration and,
+where applicable, contractual agreements.
+
+
+
+A.2 Core Permission Categories (Legend)
+Permission Code                    Description
+V               View
+C               Create
+
+Revision 1.0.0 – December 2025                                                                                             56
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Permission Code             Description
+E               Edit (own entries only unless noted)
+M               Manage (invite/revoke, configure)
+X               No access
+Notes
+    • “Edit” does not imply deletion of historical records.
+    • “Manage” permissions are restricted and auditable.
+    • Some permissions may be time-bound or deployment-specific.
+
+
+
+A.3 Role Definitions (Summary Reference)
+               Role                         Summary
+Individual                      Person at the center of care
+Care Partner                    Hands-on daily support
+Family / Trusted Person         Coordination and oversight
+Advocate / Community Support Resource navigation
+Facility / Program Staff        Shift-based continuity
+Healthcare-Adjacent Participant Transition context
+Conservator / Legal Rep         External authority
+Platform Governance             Fail Safe Tech / Trusted Partners
+
+
+A.4 Permissions Matrix — Core Account Functions
+ Function /               Care Family /          Facility
+             Individual                 Advocate          Healthcare-Adjacent Conservator Governance
+    Role                Partner Trusted            Staff
+View
+             V          V      V        V        V        V (limited)         V           X
+Timeline
+Create
+                                        C
+Timeline     C          C      C                 C        X                   C           X
+                                        (scoped)
+Entry
+Edit Own
+             E          E      E        E        E        X                   E           X
+Entries
+Edit Others’
+             X          X      X        X        X        X                   X           X
+Entries
+Upload
+             C          C      C        C        C        X                   C           X
+Attachments
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             57
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+A.5 Permissions Matrix — Observations & Structured Signals
+ Function /               Care Family /           Facility
+             Individual                 Advocate           Healthcare-Adjacent Conservator Governance
+     Role               Partner Trusted             Staff
+View
+             V          V      V        V         V        V (summary)         V           X
+Observations
+Record                                  C
+             C          C      C                  C        X                   C           X
+Observations                            (limited)
+Edit Own
+             E          E      E        E         E        X                   E           X
+Observations
+Structured
+             C          C      C        X         C        X                   C           X
+Signals
+
+
+A.6 Permissions Matrix — Resources & Local Context
+Function /              Care Family /          Facility
+           Individual                 Advocate          Healthcare-Adjacent Conservator Governance
+   Role               Partner Trusted            Staff
+View
+           V          V      V        V        V        V                   V           X
+Resources
+Add
+           C          C      C        C        C        X                   C           X
+Resources
+Edit
+           E          E      E        E        E        X                   E           X
+Resources
+Share
+           C          C      C        C        C        X                   C           X
+Resources
+
+
+A.7 Permissions Matrix — Account & Role Management
+ Function /               Care Family /          Facility
+             Individual                 Advocate          Healthcare-Adjacent Conservator Governance
+    Role                Partner Trusted           Staff
+Invite
+             M          X      M        X        X        X                   M           X
+Participants
+Revoke
+             M          X      M        X        X        X                   M           X
+Access
+Assign
+             M          X      M        X        X        X                   M           X
+Roles
+View
+             V          X      V        X        X        X                   V           V
+Access Log
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             58
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+A.8 Permissions Matrix — Exports & Transitions
+Function              Care Family /          Facility
+         Individual                 Advocate          Healthcare-Adjacent Conservator Governance
+  / Role            Partner Trusted            Staff
+Generate
+         C          X      C        X        C        X                   C           X
+Summary
+View
+         V          V      V        V        V        V                   V           X
+Summary
+                                             C
+Export
+         C          X      C        X        (scoped X                    C           X
+Data
+                                             )
+
+
+A.9 Permissions Matrix — Knowledge Layer Interaction
+ Function /              Care Family /                  Facility
+            Individual                      Advocate             Healthcare-Adjacent Conservator Governance
+   Role                Partner Trusted                   Staff
+View
+Knowledge V            V         V          V          V         V                   V            V
+Content
+Submit                 C                               C
+                                 C          C
+Knowledge C (indirect) (indirect                       (indirect X                   C (indirect) X
+                                 (indirect) (indirect)
+Input                  )                               )
+Moderate
+            X          X         X          X          X         X                   X            M
+Content
+
+
+A.10 Special Considerations and Constraints
+A.10.1 Capacity Changes
+When an Individual’s capacity changes:
+    • Management permissions may shift to a trusted role
+    • Historical data remains unchanged
+    • Changes are logged contextually
+
+A.10.2 Time-Bound Roles
+Roles such as advocates, facility staff, and healthcare-adjacent participants may be:
+    • Time-limited
+    • Automatically reviewed
+    • Revoked at transition points
+
+Revision 1.0.0 – December 2025                                                                                             59
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+A.10.3 Institutional Overrides
+Institutional deployments may impose additional constraints consistent with policy and agreement, without
+expanding scope beyond this framework.
+
+
+
+A.11 Governance and Enforcement
+Fail Safe Technologies LLC maintains authority to:
+    • Enforce permission boundaries
+    • Review misuse
+    • Suspend or revoke access
+    • Update matrices as governance evolves
+Changes to this appendix are versioned and reviewed through formal governance processes.
+
+Appendix B — Moderation & Knowledge Governance
+Standard Operating Procedures (SOPs)
+B.1 Purpose and Authority
+This appendix establishes the standard operating procedures governing moderation, curation, and lifecycle
+management of CareDune™ Knowledge Layer content. These procedures ensure that shared informational
+content is accurate, conservative, non-directive, and ethically appropriate, while protecting individual privacy
+and preventing misuse.
+Ultimate authority for moderation and governance rests with Fail Safe Technologies LLC. Trusted partners
+may participate under written agreements that define scope, responsibilities, and escalation pathways.
+
+
+B.2 Scope of Moderation
+These SOPs apply to all Knowledge Layer content, including:
+    • Aggregated and anonymized informational insights
+    • Curated resources and references
+    • Partner-submitted educational materials
+    • Revisions, retirements, and withdrawals of content
+These SOPs do not apply to individual timelines, which are governed by Section 7 and Section 10.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             60
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+B.3 Guiding Principles
+Moderation and governance are guided by the following principles:
+    • Informational, not directive: Content informs understanding without prescribing actions
+    • Conservative framing: Avoids absolute language, guarantees, or implied authority
+    • Privacy-first: Prevents re-identification and inference risks
+    • Context-aware: Acknowledges variability across individuals and environments
+    • Accountable: Decisions are documented and reviewable
+
+
+B.4 Roles and Responsibilities
+Fail Safe Technologies LLC (Program Governance)
+    • Owns moderation policy and enforcement
+    • Approves publication, revision, and retirement
+    • Conducts periodic audits and reviews
+    • Handles escalations and incident response
+Trusted Moderation Partners (Where Applicable)
+    • Review content within defined scope
+    • Flag risks, inaccuracies, or boundary concerns
+    • Participate in scheduled governance reviews
+Advisory Council (Advisory Only)
+    • Provides ethical and domain guidance
+    • Reviews trends and risk areas
+    • Does not moderate individual submissions
+
+
+B.5 Content Intake and Eligibility
+Eligible content sources include:
+    • Aggregated, anonymized patterns derived from multiple accounts
+    • Curated community or institutional resources
+    • Partner-authored educational materials
+    • Publicly available informational references
+Revision 1.0.0 – December 2025                                                                                             61
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Ineligible content includes:
+    • Identifiable individual experiences
+    • Single-account anecdotes
+    • Clinical instructions or protocols
+    • Emergency guidance or crisis intervention instructions
+Content failing eligibility criteria is rejected without revision.
+
+
+B.6 Anonymization and Aggregation Verification
+Before moderation review, content must pass anonymization and aggregation checks:
+    • Removal of direct identifiers
+    • Suppression of rare or unique combinations
+    • Aggregation thresholds met
+    • Temporal smoothing applied where necessary
+    • Manual review for contextual re-identification risk
+Content failing verification is not eligible for moderation.
+
+
+B.7 Moderation Review Process
+Step 1 — Initial Screening
+    • Scope and eligibility check
+    • Boundary and framing review
+    • Obvious risk identification
+Step 2 — Substantive Review
+    • Accuracy and clarity assessment
+    • Tone and language consistency
+    • Variability and limitations explicitly stated
+Step 3 — Risk Assessment
+    • Potential for misinterpretation
+    • Risk of overgeneralization
+
+Revision 1.0.0 – December 2025                                                                                             62
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Risk to vulnerable populations
+Step 4 — Decision
+    • Approve for publication
+    • Approve with revisions
+    • Reject with documented rationale
+All decisions are logged.
+
+
+B.8 Publication Standards
+Approved content must meet the following standards:
+    • Plain-language, accessible wording
+    • Clear informational disclaimers
+    • Explicit statement of limitations
+    • No prescriptive or authoritative tone
+    • No implied endorsement of specific actions
+Content is tagged with:
+    • Category
+    • Version
+    • Review date
+
+
+B.9 Ongoing Review and Maintenance
+Review cadence:
+    • Scheduled periodic reviews (e.g., quarterly or semi-annually)
+    • Ad hoc reviews triggered by feedback or incidents
+Maintenance actions may include:
+    • Clarification or reframing
+    • Updating references
+    • Temporary suppression
+    • Permanent retirement
+
+Revision 1.0.0 – December 2025                                                                                             63
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Outdated or risky content is removed promptly.
+
+
+B.10 Feedback and Escalation Handling
+Users and partners may flag Knowledge Layer content for review.
+Escalation triggers include:
+    • Perceived harm or distress
+    • Misinterpretation or misuse
+    • Factual inaccuracies
+    • Boundary violations
+Escalations are triaged and resolved according to severity, with documentation.
+
+
+B.11 Incident Response Related to Knowledge Content
+If Knowledge Layer content is implicated in harm or significant confusion:
+    • Content is immediately reviewed and, if necessary, removed
+    • Advisory Council may be consulted
+    • Root cause analysis is conducted
+    • Corrective actions are documented
+Transparency is prioritized without exposing sensitive deliberations.
+
+
+B.12 Documentation and Auditability
+All moderation actions are documented, including:
+    • Source and submission context
+    • Review steps and outcomes
+    • Revisions and rationale
+    • Review and retirement dates
+Documentation supports institutional trust and governance review.
+
+
+B.13 Training and Consistency
+Moderators receive training on:
+Revision 1.0.0 – December 2025                                                                                             64
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Scope boundaries
+    • Ethical considerations
+    • Language standards
+    • Re-identification risk
+Consistency across moderators is maintained through shared guidance and periodic calibration reviews.
+
+
+B.14 Governance Review and Evolution
+These SOPs are reviewed periodically by Fail Safe Technologies LLC and updated as needed based on:
+    • Operational experience
+    • Advisory Council input
+    • Regulatory or ethical considerations
+Updates are versioned and communicated appropriately.
+
+Appendix C — Interoperability & Data Exchange Reference
+C.1 Purpose and Positioning
+This appendix defines CareDune™’s interoperability posture, data exchange philosophy, and technical reference
+boundaries. Interoperability is treated as an enabler of continuity, not as a requirement for participation and not
+as a mechanism for surveillance, aggregation, or secondary use of data.
+CareDune™ is intentionally positioned as a continuity and context layer, not a system of record, clinical
+platform, or replacement for institutional systems.
+
+
+C.2 Interoperability Design Principles
+CareDune™ interoperability is governed by the following principles:
+    • Opt-in only — No implicit data exchange
+    • Export-first — Data is prepared for sharing, not continuously streamed
+    • Human-mediated — Exchanges support human decision-making
+    • Standards-aligned, not standards-bound
+    • Governance before integration
+These principles ensure interoperability does not expand scope or liability.
+
+
+
+Revision 1.0.0 – December 2025                                                                                             65
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+C.3 Categories of Interoperability
+CareDune™ supports multiple interoperability patterns, each with distinct governance requirements.
+Primary categories include:
+    • Manual export and summary exchange
+    • Structured document exchange
+    • API-based data exchange (limited)
+    • Knowledge Layer reference linkage
+Not all deployments support all categories.
+
+
+C.4 Manual and Human-Mediated Exchange
+Manual exchange remains the default and preferred interoperability mechanism.
+Examples include:
+    • Printable transition summaries
+    • Securely shared PDFs
+    • Participant-facilitated sharing
+Manual exchange ensures clarity, consent, and contextual explanation during transitions.
+
+
+C.5 Structured Document Exchange
+Where appropriate, CareDune™ supports structured document formats to improve clarity and consistency.
+Examples include:
+    • Continuity summaries
+    • Role and contact overviews
+    • Resource and preference summaries
+Documents are designed to be readable by humans first and systems second.
+
+
+C.6 API and Programmatic Exchange (Limited)
+API-based interoperability is intentionally limited and subject to governance review.
+Potential use cases include:
+    • Partner-initiated data pulls for authorized summaries
+Revision 1.0.0 – December 2025                                                                                             66
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Grant or evaluation reporting
+    • Research interfaces under strict controls
+APIs do not provide real-time streaming, monitoring, or autonomous updates.
+
+
+C.7 FHIR-Aligned Positioning (Early and Deliberate)
+CareDune™ aligns conceptually with HL7 FHIR principles without presenting itself as a clinical FHIR
+endpoint by default.
+FHIR-aligned considerations include:
+    • Resource-oriented data modeling
+    • Clear separation of narrative vs structured elements
+    • Support for DocumentReference-style exchanges
+    • Terminology awareness without enforcement
+FHIR alignment is introduced only where explicitly required by partner agreements.
+
+
+C.8 What CareDune™ Is Not
+To prevent misuse or misrepresentation, CareDune™ explicitly does not function as:
+    • An Electronic Health Record (EHR)
+    • A clinical decision support system
+    • A real-time monitoring platform
+    • A population health analytics engine
+    • A predictive or risk-scoring system
+These exclusions are foundational to interoperability governance.
+
+
+C.9 Consent and Authorization for Exchange
+All interoperability actions require:
+    • Explicit consent from the Individual or authorized role
+    • Clear identification of recipient
+    • Defined scope and duration
+    • Revocability
+Revision 1.0.0 – December 2025                                                                                             67
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Consent status is documented at the time of exchange.
+
+
+C.10 Security Controls for Exchange
+Interoperability pathways are secured through:
+    • Encrypted transmission
+    • Authentication and authorization checks
+    • Rate limiting where applicable
+    • Logging of exchange events
+Security controls are proportional to risk and deployment context.
+
+
+C.11 Partner Integration Requirements
+Partners seeking deeper integration must meet defined requirements, including:
+    • Written agreements outlining scope and responsibility
+    • Privacy and security alignment
+    • Defined technical endpoints
+    • Support and escalation procedures
+Integration requests are reviewed and approved individually.
+
+
+C.12 Research and Evaluation Interfaces
+In limited contexts, CareDune™ may support research or evaluation interfaces.
+Conditions include:
+    • Aggregated, non-identifying data only
+    • Explicit governance approval
+    • Clear purpose limitation
+    • No secondary use without authorization
+Research access does not expose individual timelines.
+
+
+C.13 Knowledge Layer Interoperability
+Knowledge Layer content may reference external standards, public datasets, or partner resources.
+Revision 1.0.0 – December 2025                                                                                             68
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Constraints include:
+    • Informational use only
+    • No automated ingestion of external datasets
+    • Moderation and contextual framing
+Knowledge Layer interoperability does not imply endorsement.
+
+
+C.14 Evolution of Interoperability
+Interoperability capabilities evolve cautiously.
+Expansion is contingent upon:
+    • Demonstrated partner need
+    • Governance approval
+    • Risk assessment
+    • Pilot validation
+Interoperability is never expanded solely for convenience or market pressure.
+
+
+C.15 Summary
+CareDune™’s interoperability framework enables continuity across boundaries without sacrificing governance,
+consent, or scope integrity. By favoring export-first, human-mediated exchange and early but restrained
+standards alignment, CareDune™ remains adaptable, defensible, and trustworthy.
+
+Appendix D — Pilot Templates & Memoranda of
+Understanding (MOUs)
+D.1 Purpose
+This appendix provides standardized templates and reference language for structuring CareDune™ pilot
+programs with external partners. These templates are designed to accelerate responsible adoption while
+maintaining clear scope, governance, and accountability boundaries.
+All pilot engagements are governed by written agreements. Informal or implied pilots are not permitted.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             69
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+D.2 Pilot Program Overview Template
+D.2.1 Pilot Description
+Program Name: CareDune™ Pilot Program
+Partner Organization: [Partner Legal Name]
+Pilot Duration: [Start Date] – [End Date]
+Deployment Model: [Community / Facility / Healthcare-Adjacent / Public Sector]
+Primary Contact: [Name, Title, Email]
+Purpose Statement
+This pilot is intended to evaluate CareDune™ as a continuity and context preservation tool within the defined
+scope. The pilot is exploratory and does not constitute a clinical, diagnostic, or treatment program.
+
+
+D.2.2 Objectives
+    • Evaluate continuity improvements across defined roles
+    • Assess onboarding clarity and usability
+    • Validate governance and consent controls
+    • Identify operational and technical gaps
+Objectives are informational and evaluative only.
+
+
+D.2.3 Scope and Limitations
+In Scope
+    • Defined participant group
+    • Approved roles and permissions
+    • Continuity documentation workflows
+    • Approved reporting metrics
+Out of Scope
+    • Clinical decision-making
+    • Medical record replacement
+    • Emergency response coordination
+    • Population-level analytics
+
+
+Revision 1.0.0 – December 2025                                                                                             70
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+D.3 Pilot Roles & Responsibilities Template
+D.3.1 Fail Safe Technologies LLC Responsibilities
+    • Provide CareDune™ platform access
+    • Deliver onboarding and training materials
+    • Provide defined support during pilot period
+    • Conduct evaluation and reporting
+Fail Safe Technologies LLC does not provide care services or clinical oversight.
+
+
+D.3.2 Partner Organization Responsibilities
+    • Identify eligible participants
+    • Ensure participant onboarding and consent
+    • Train staff and stakeholders
+    • Enforce scope and usage boundaries
+    • Designate escalation points
+
+
+D.3.3 Participant Responsibilities
+    • Use the platform consistent with defined scope
+    • Respect privacy and role boundaries
+    • Report issues or concerns
+
+
+
+D.4 Data Use & Privacy Addendum (Pilot)
+D.4.1 Data Ownership
+Participants retain ownership of their data. CareDune™ processes data solely to support continuity workflows
+as defined in the pilot scope.
+
+
+D.4.2 Data Access
+Access is role-based, consent-driven, and revocable.
+
+
+
+Revision 1.0.0 – December 2025                                                                                             71
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+D.4.3 Reporting Data
+Pilot reporting uses aggregated, non-identifying data only unless otherwise agreed in writing.
+
+
+
+D.5 Compliance & Regulatory Positioning
+    • CareDune™ is not a HIPAA-covered entity by default
+    • Regulated data requires separate agreements
+    • No implied Business Associate relationship
+
+
+
+D.6 Pilot Evaluation & Reporting Template
+D.6.1 Evaluation Criteria
+    • Continuity consistency
+    • Participant experience
+    • Governance effectiveness
+    • Operational feasibility
+
+
+D.6.2 Reporting Deliverables
+    • Pilot summary report
+    • Observed outcomes and limitations
+    • Recommendations
+
+
+
+D.7 Decision Gates & Next Steps
+At pilot conclusion, parties will determine whether to:
+    • Scale deployment
+    • Extend pilot
+    • Modify scope
+    • Discontinue use
+No automatic continuation is implied.
+
+
+Revision 1.0.0 – December 2025                                                                                             72
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+D.8 Termination Clause (Pilot)
+Either party may terminate the pilot with written notice if:
+    • Scope is violated
+    • Risk becomes unacceptable
+    • Governance controls fail
+Termination procedures include participant notification and access revocation.
+
+
+
+D.9 Memorandum of Understanding (MOU) — Reference Template
+D.9.1 Parties
+This Memorandum of Understanding (“MOU”) is entered into by and between:
+Fail Safe Technologies LLC
+and
+[Partner Legal Name]
+
+
+D.9.2 Non-Binding Nature
+This MOU is non-binding and does not create a partnership, joint venture, or agency relationship.
+
+
+D.9.3 Scope of Collaboration
+The parties agree to collaborate on a CareDune™ pilot program consistent with Appendix D and referenced
+pilot documentation.
+
+
+D.9.4 Confidentiality
+Each party agrees to protect confidential information exchanged during the pilot.
+
+
+D.9.5 Liability and Disclaimers
+CareDune™ is provided “as is” for pilot purposes. Neither party assumes liability for outcomes beyond the
+defined scope.
+
+
+D.9.6 Term and Termination
+This MOU remains in effect for the duration of the pilot unless terminated earlier in writing.
+Revision 1.0.0 – December 2025                                                                                             73
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+
+D.9.7 Governing Law
+This MOU shall be governed by the laws of the State of New York, without regard to conflict-of-law principles.
+
+
+D.9.8 Signatures
+Authorized representatives of both parties acknowledge this MOU.
+
+Appendix E — Transition Summary Examples
+E.1 Purpose
+This appendix provides illustrative, non-identifying examples of CareDune™ transition summaries. These
+examples demonstrate how continuity context is preserved and communicated across transitions without
+introducing clinical direction, diagnosis, or operational authority.
+Transition summaries are export-first, human-readable artifacts intended to support safe handoffs between
+people, roles, and environments.
+
+
+
+E.2 Design Principles for Transition Summaries
+Transition summaries adhere to the following principles:
+    • Person-centered, not system-centered
+    • Informational, not prescriptive
+    • Concise, structured, and readable
+    • Clear about scope and limitations
+    • Appropriate for mixed audiences
+They are designed to complement—not replace—formal documentation systems.
+
+
+
+E.3 Example 1 — Home to Assisted Living Transition
+Transition Context
+Individual transitioning from private residence to assisted living facility.
+
+
+CareDune™ Continuity Summary
+Individual: [Name Redacted]
+Preferred Name: [As Provided]
+Revision 1.0.0 – December 2025                                                                                             74
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Transition Date: [Date]
+Prepared By: Care Partner (Family)
+
+
+Daily Routines & Preferences
+    • Prefers mornings to be quiet and unhurried
+    • Responds well to gentle verbal cues rather than touch
+    • Enjoys listening to classical music during personal care
+    • Prefers tea over coffee
+
+
+Communication & Interaction
+    • Best communication is direct, calm, and at eye level
+    • Becomes anxious when rushed or given multiple instructions at once
+    • Responds positively to reassurance and familiar phrases
+
+
+Mobility & Safety Considerations
+    • Ambulates independently with supervision
+    • Tends to forget to use handrails
+    • Benefits from visual cues for room orientation
+
+
+Emotional & Behavioral Observations
+    • May become withdrawn in unfamiliar settings
+    • Reassurance and orientation cues are effective
+    • Enjoys brief social interaction but needs quiet time afterward
+
+
+Important Context
+This summary reflects observed patterns and preferences. It is informational and not a care directive.
+
+
+
+E.4 Example 2 — Hospital Discharge to Home
+Transition Context
+Individual discharged from hospital to home with family support.
+Revision 1.0.0 – December 2025                                                                                             75
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+
+CareDune™ Transition Summary
+Individual: [Name Redacted]
+Transition Date: [Date]
+Prepared By: Family Care Partner
+
+
+Baseline Context
+    • Lives with spouse
+    • Familiar environment significantly reduces anxiety
+    • Prefers predictable daily routines
+
+
+Daily Support Notes
+    • Best times for engagement are late morning and early afternoon
+    • Fatigue increases irritability in the evening
+    • Responds well to written reminders placed visibly
+
+
+Appetite & Nutrition Observations
+    • Appetite varies; small, frequent meals preferred
+    • Gentle prompts may be needed to initiate meals
+
+
+Stress Triggers & Supports
+    • Loud or crowded environments increase confusion
+    • Calming strategies include music and quiet conversation
+
+
+Notes for Receiving Team
+This summary is intended to support continuity and context during transition. It does not replace discharge
+instructions or clinical documentation.
+
+
+
+E.5 Example 3 — Shift-to-Shift Facility Handoff
+Transition Context
+Handoff between caregiving shifts in a memory care unit.
+Revision 1.0.0 – December 2025                                                                                             76
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+
+CareDune™ Shift Continuity Summary
+Individual: [Name Redacted]
+Shift Date: [Date]
+Prepared By: Facility Staff
+
+
+Day Overview
+    • Generally calm and cooperative during morning hours
+    • Participated in group activity with encouragement
+
+
+Appetite & Hydration
+    • Ate approximately half of lunch
+    • Needed reminder to drink fluids
+
+
+Behavioral Notes
+    • Became restless mid-afternoon
+    • Redirection with walking and conversation was effective
+
+
+Helpful Approaches
+    • One-step instructions worked best
+    • Maintained calm tone throughout interactions
+
+
+Notes for Next Shift
+Monitor hydration and provide quiet environment after dinner.
+
+
+
+E.6 Example 4 — Community Program Referral
+Transition Context
+Referral from community program to external support service.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             77
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+CareDune™ Continuity Summary
+Participant: [Name Redacted]
+Prepared By: Community Advocate
+
+
+Engagement Overview
+    • Actively engaged in group sessions
+    • Expressed interest in local support groups
+
+
+Resource Preferences
+    • Prefers in-person activities over virtual
+    • Transportation access is a consideration
+
+
+Communication Notes
+    • Responds well to clear expectations and written follow-up
+
+
+Referral Context
+This summary provides continuity context to support referral coordination. It does not imply eligibility or
+service approval.
+
+
+
+E.7 Common Disclaimers Used in Summaries
+Each summary includes standardized language clarifying that:
+    • Content is observational and informational
+    • It does not constitute medical or clinical guidance
+    • It reflects observed patterns at a point in time
+This ensures summaries are used appropriately.
+
+
+
+E.8 Customization by Deployment
+Transition summaries may be customized by:
+    • Deployment type
+    • Partner requirements
+Revision 1.0.0 – December 2025                                                                                             78
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+    • Participant preferences
+Customization does not expand scope or authority.
+
+
+
+E.9 Summary
+Transition summaries are a core CareDune™ artifact. By preserving context across transitions without
+overreach, they reduce friction, support dignity, and improve continuity across environments.
+
+Appendix F — Glossary & Definitions
+F.1 Purpose
+This glossary establishes a shared vocabulary for CareDune™ to ensure consistent interpretation across
+individuals, caregivers, community partners, institutions, funders, and regulators. Terms are defined
+conservatively to avoid ambiguity, scope creep, or implied authority.
+Unless otherwise stated, definitions apply throughout the CareDune™ platform, documentation, agreements,
+and communications.
+
+
+
+F.2 Core Program Terms
+CareDune™
+A continuity-focused journaling, context preservation, and resource organization platform operated by Fail Safe
+Technologies LLC. CareDune™ is informational, non-clinical, and designed to support continuity across
+people, roles, and environments.
+
+
+Continuity
+The preservation and transfer of contextual understanding—preferences, routines, observations, and lived
+experience—across time, roles, and transitions.
+
+
+Context Layer / Continuity Layer
+The non-clinical information space where personal context is captured and shared to reduce information loss
+during transitions.
+
+
+Transition
+A change in environment, role, responsibility, or care setting requiring continuity of context (e.g., home to
+facility, shift change, hospital discharge).
+
+
+Revision 1.0.0 – December 2025                                                                                             79
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Transition Summary
+A structured, human-readable artifact generated by CareDune™ to support continuity during transitions.
+Informational only.
+
+
+
+F.3 Role-Related Terms
+Individual
+The person at the center of the CareDune™ account whose continuity is being preserved.
+
+
+Care Partner
+A person providing hands-on, day-to-day support. May be family, friend, or informal caregiver.
+
+
+Family / Trusted Person
+An invited participant who supports coordination, oversight, or advocacy but may not provide daily care.
+
+
+Advocate
+A community-based or organizational support role assisting with navigation of services and resources.
+
+
+Facility Staff
+Staff members participating in CareDune™ within a defined facility or program context and scope.
+
+
+Healthcare-Adjacent Participant
+A participant involved during transitions or coordination (e.g., discharge planners), without clinical authority in
+CareDune™.
+
+
+Conservator / Legal Representative
+A legally authorized individual acting on behalf of the Individual within defined legal bounds.
+
+
+Governance Role
+Fail Safe Technologies LLC or designated trusted partners responsible for platform governance, moderation,
+and oversight.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             80
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+F.4 Data and Content Terms
+Timeline
+A chronological record of observations, notes, and contextual information captured within an account.
+
+
+Observation
+A factual or experiential note recorded by a participant, without diagnosis or interpretation.
+
+
+Structured Signal
+A categorized observation used to support consistency and trend awareness without scoring or prediction.
+
+
+Attachment
+A user-provided file (e.g., photo, audio, document) intentionally added to support context.
+
+
+Knowledge Layer
+A moderated, aggregated informational layer derived from anonymized patterns and curated resources. Separate
+from individual timelines.
+
+
+Moderation
+The review, curation, and governance of Knowledge Layer content to ensure safety, accuracy, and scope
+compliance.
+
+
+
+F.5 Governance and Compliance Terms
+Consent
+An explicit, revocable authorization granting access or participation within defined scope.
+
+
+Role-Based Access Control (RBAC)
+A permission model where access is granted based on assigned roles rather than individuals.
+
+
+Least Privilege
+A security principle granting only the minimum access necessary to perform a function.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             81
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+Business Associate Agreement (BAA)
+A written agreement required when handling Protected Health Information (PHI) under HIPAA. Not assumed
+by default.
+
+
+HIPAA-Covered Entity
+An organization regulated under HIPAA. CareDune™ is not a covered entity by default.
+
+
+Regulated Deployment
+A deployment involving legal or regulatory requirements beyond standard consumer or community use.
+
+
+
+F.6 Interoperability Terms
+Export-First
+A design approach prioritizing deliberate, human-mediated data sharing over continuous integration.
+
+
+FHIR-Aligned
+Conceptual alignment with HL7 FHIR principles without operating as a clinical FHIR endpoint by default.
+
+
+Document Exchange
+Sharing structured or semi-structured documents between systems or parties.
+
+
+API (Application Programming Interface)
+A controlled programmatic interface enabling limited data exchange under governance approval.
+
+
+
+F.7 Measurement and Evaluation Terms
+Outcome Measurement
+Assessment of continuity-related indicators for learning and accountability, not clinical outcomes.
+
+
+Aggregation
+Combining data from multiple sources to prevent identification and reduce inference risk.
+
+
+Non-Identifying Data
+Data that does not directly or indirectly identify an individual.
+Revision 1.0.0 – December 2025                                                                                             82
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+
+Pilot Program
+A time-bound, scoped deployment intended to evaluate fit, governance, and impact.
+
+
+
+F.8 Ethical and Boundary Terms
+Scope Boundary
+A defined limit on what CareDune™ does and does not support.
+
+
+Non-Clinical
+Not involving diagnosis, treatment, medical advice, or clinical decision-making.
+
+
+Informational Content
+Content intended to support understanding without prescribing action.
+
+
+Overreach
+Use of the platform beyond defined scope or authority.
+
+
+
+F.9 Legal and Operational Terms
+Fail Safe Technologies LLC
+The legal entity responsible for CareDune™, including governance, operations, and compliance.
+
+
+Partner Organization
+An external organization participating in a CareDune™ deployment under agreement.
+
+
+MOU (Memorandum of Understanding)
+A non-binding agreement outlining collaboration terms for pilots or programs.
+
+
+Deployment Model
+The operational context in which CareDune™ is used (e.g., individual, community, facility).
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             83
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+                              DRAFT ::: CareDune™ - Master Program, Platform and Governance Document
+
+
+F.10 Interpretation and Updates
+This glossary is authoritative for CareDune™ documentation. Definitions may be refined over time through
+governance review. Updates are versioned and communicated where applicable.
+
+
+
+
+Revision 1.0.0 – December 2025                                                                                             84
+Fail Safe Technologies LLC - CareDune™                                                             FSTLLC – BUSINESS PROTECTED
+
+                                       Confidential work product of Fail Safe Technologies LLC
+                          CareDune™ - A Fail Safe Technologies LLC Community Engagement Program Offering
+

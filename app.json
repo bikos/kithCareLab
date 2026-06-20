@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "KithCare",
+    "slug": "kithcare",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "owner": "kithcarelab",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#fff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kithcarelab.kithcare",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#fff"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.kithcarelab.kithcare",
+      "icon": "./assets/images/icon.png"
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d279ed56-02ba-4aad-b7b9-09bce19dbbcb"
+      }
+    }
+  }
+}
