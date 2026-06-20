@@ -61,6 +61,15 @@ For native mobile applications (iOS / Android), we use Expo Application Services
 - **Android AAB (Production):** `npm run build:production`
 - **iOS IPA (Production):** `npm run build:ios-prod`
 
+### Backend Deployment (Supabase Edge Functions)
+
+KithCare uses Supabase Edge Functions for secure backend tasks (e.g., dispatching email invites via Resend). If you modify the code in the `supabase/functions/` directory, you must push the changes to Supabase manually using the CLI:
+
+```bash
+npx supabase functions deploy invite-user
+```
+*(If prompted, log in with your Supabase credentials or use your Supabase Access Token).*
+
 ## 🔒 Authentication & Security
 
 KithCare relies on Supabase Auth. The system utilizes protected routing via Expo Router (`app/_layout.tsx`). The app actively listens for session states, invite links, and password recovery hashes to automatically direct users to the appropriate secure portals based on their administrative clearance (`profiles` and `organization_members` tables).
