@@ -24,16 +24,21 @@ serve(async (req) => {
 
     const supabase = createClient(supabaseUrl, serviceRoleKey)
 
-    const { email, name, firstName, lastName, organization_id } = await req.json()
+    const { email, name, firstName, lastName, organization_id, redirectTo } = await req.json()
     console.log('Inviting Email:', email)
 
     if (!email) {
       throw new Error('Email is required')
     }
 
+    // Use passed URL, or ENV variable, or fallback to the Netlify production URL
+    const frontendUrl = redirectTo 
+      || Deno.env.get('FRONTEND_URL') 
+      || 'https://kithcarelab.netlify.app/dashboard'
+
     // Standard Supabase Invite
     const { data: user, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(email, {
-      redirectTo: 'http://localhost:8081/dashboard',
+      redirectTo: frontendUrl,
       data: {
         organization_id: organization_id,
         full_name: name, // Pass full name to user metadata

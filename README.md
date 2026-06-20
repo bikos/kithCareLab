@@ -37,8 +37,11 @@ git push origin main
 **Understanding `netlify.toml`:**
 The `netlify.toml` file is the master configuration file that Netlify reads when building the app. It instructs Netlify on three critical things:
 1. **Build Command (`npm run build:web`)**: Tells Netlify exactly how to bundle the Expo project.
-2. **Publish Directory (`dist`)**: Tells Netlify which folder contains the final, compiled website to host.
-3. **Redirects**: Injects a rule (`from = "/*", to = "/index.html", status = 200`) that routes all traffic back to `index.html`. Because KithCare is a Single Page Application (SPA), this is strictly required to prevent 404 errors when a user directly navigates to or refreshes a URL like `/dashboard`.
+**2. Manual One-Click Deploy**
+If you need to forcefully push a manual update to Netlify straight from your local terminal, we have created a custom script that bundles the app and deploys the `dist` directory:
+```bash
+npm run deploy:web
+```
 
 **3. Environment Variables (Required!)**
 A common issue during deployment is a "blank white screen". Because Netlify builds the app on their secure servers, they do not have access to your local `.env` file. You **must** manually enter your Supabase credentials into the Netlify Dashboard before the app can render successfully.
