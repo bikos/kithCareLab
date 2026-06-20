@@ -12,6 +12,7 @@ export default function SetPasswordScreen() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
     const [error, setError] = useState('');
     const [user, setUser] = useState<User | null>(null);
     const router = useRouter();
