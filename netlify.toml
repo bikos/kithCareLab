@@ -1,6 +1,7 @@
 [build]
   command = "npm run build:web"
   publish = "dist"
+  functions = "netlify/functions"
 
 [build.environment]
   # Specify the Node.js version to use for the build
