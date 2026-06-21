@@ -9,7 +9,7 @@ import {
     Pressable,
     Animated,
 } from 'react-native';
-import { Text, Button, Surface } from 'react-native-paper';
+import { Text, Button, Surface, TextInput, HelperText } from 'react-native-paper';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -33,6 +33,31 @@ function HeroVideo({ style }: { style?: any }) {
             />
         </View>
     );
+}
+
+// Conditional form wrapper to allow Netlify Form discovery on web
+function FormWrapper({ children, onSubmit }: { children: React.ReactNode; onSubmit: () => void }) {
+    if (Platform.OS === 'web') {
+        // @ts-ignore
+        return (
+            <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    onSubmit();
+                }}
+                style={{ width: '100%' }}
+            >
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
+                {children}
+            </form>
+        );
+    }
+    return <View style={{ width: '100%' }}>{children}</View>;
 }
 
 // Inject web-only CSS animation keyframes once
@@ -100,6 +125,107 @@ export default function Index() {
 
     useWebAnimations();
 
+    // Contact Form State
+    const [contactName, setContactName] = React.useState('');
+    const [contactEmail, setContactEmail] = React.useState('');
+    const [contactPhone, setContactPhone] = React.useState('');
+    const [contactRole, setContactRole] = React.useState('Family Caregiver');
+    const [contactMessage, setContactMessage] = React.useState('');
+    const [botField, setBotField] = React.useState('');
+
+    const [formLoading, setFormLoading] = React.useState(false);
+    const [formError, setFormError] = React.useState('');
+    const [formSuccess, setFormSuccess] = React.useState(false);
+
+    // Attribution / CRM tracking state
+    const [tracking, setTracking] = React.useState({
+        utm_source: '',
+        utm_medium: '',
+        utm_campaign: '',
+        utm_term: '',
+        utm_content: '',
+        referrer: '',
+        page_url: '',
+    });
+
+    useEffect(() => {
+        if (Platform.OS !== 'web' || typeof window === 'undefined') return;
+        try {
+            const params = new URLSearchParams(window.location.search);
+            setTracking({
+                utm_source: params.get('utm_source') || '',
+                utm_medium: params.get('utm_medium') || '',
+                utm_campaign: params.get('utm_campaign') || '',
+                utm_term: params.get('utm_term') || '',
+                utm_content: params.get('utm_content') || '',
+                referrer: document.referrer || '',
+                page_url: window.location.href || '',
+            });
+        } catch (err) {
+            console.log('[Tracking] Error parsing search query parameters:', err);
+        }
+    }, []);
+
+    const handleContactSubmit = async () => {
+        if (!contactName.trim()) {
+            setFormError('Please enter your name.');
+            return;
+        }
+        if (!contactEmail.trim() || !contactEmail.includes('@')) {
+            setFormError('Please enter a valid email address.');
+            return;
+        }
+
+        setFormError('');
+        setFormLoading(true);
+
+        try {
+            const submissionData = {
+                'form-name': 'contact',
+                name: contactName,
+                email: contactEmail,
+                phone: contactPhone,
+                role: contactRole,
+                message: contactMessage,
+                'bot-field': botField,
+                utm_source: tracking.utm_source,
+                utm_medium: tracking.utm_medium,
+                utm_campaign: tracking.utm_campaign,
+                utm_term: tracking.utm_term,
+                utm_content: tracking.utm_content,
+                referrer: tracking.referrer,
+                page_url: tracking.page_url,
+                submitted_at: new Date().toISOString(),
+                lead_source: 'kithcare-landing',
+            };
+
+            if (Platform.OS === 'web') {
+                const urlEncodedBody = Object.keys(submissionData)
+                    // @ts-ignore
+                    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(submissionData[key]))
+                    .join('&');
+
+                const res = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: urlEncodedBody,
+                });
+
+                if (!res.ok) {
+                    throw new Error('Something went wrong. Please try submitting again.');
+                }
+            } else {
+                console.log('[Native Form Submission Data]', submissionData);
+            }
+
+            setFormSuccess(true);
+        } catch (err: any) {
+            setFormError(err.message || 'An error occurred. Please try again.');
+        } finally {
+            setFormLoading(false);
+        }
+    };
+
     // Floating animations via RN Animated API (works on all platforms)
     const float1 = useRef(new Animated.Value(0)).current;
     const float2 = useRef(new Animated.Value(0)).current;
@@ -148,6 +274,7 @@ export default function Index() {
                             <Pressable onPress={() => scrollTo(700)}><Text style={s.navLink}>Architecture</Text></Pressable>
                             <Pressable onPress={() => scrollTo(1400)}><Text style={s.navLink}>Features</Text></Pressable>
                             <Pressable onPress={() => scrollTo(2200)}><Text style={s.navLink}>How It Works</Text></Pressable>
+                            <Pressable onPress={() => scrollTo(3800)}><Text style={s.navLink}>Contact</Text></Pressable>
                         </View>
                     )}
                     <Button mode="contained" onPress={() => router.push('/auth/login')}
@@ -336,6 +463,142 @@ export default function Index() {
                     </Text>
                 </View>
 
+                {/* ── Contact Us Form ── */}
+                <View style={[s.contactSection, isWide ? s.sectionWide : s.sectionNarrow]}>
+                    <Text style={s.contactEyebrow}>GET IN TOUCH</Text>
+                    <Text style={s.contactTitle}>Have questions? Let's connect.</Text>
+                    <Text style={s.contactBody}>
+                        Whether you are a family caregiver, nursing administrator, or home care manager, we would love to hear from you.
+                    </Text>
+
+                    <Surface style={s.contactCard} elevation={2}>
+                        {formSuccess ? (
+                            <View style={s.successContainer}>
+                                <View style={s.successIconWrap}>
+                                    <MaterialCommunityIcons name="check-all" size={48} color="#00695C" />
+                                </View>
+                                <Text style={s.successTitle}>Thank you!</Text>
+                                <Text style={s.successText}>
+                                    Your message has been sent successfully. Our team will get back to you within 24 hours.
+                                </Text>
+                            </View>
+                        ) : (
+                            <FormWrapper onSubmit={handleContactSubmit}>
+                                {!!formError && (
+                                    <View style={s.formErrorBox}>
+                                        <Text style={s.formErrorText}>{formError}</Text>
+                                    </View>
+                                )}
+
+                                {Platform.OS === 'web' && (
+                                    <input
+                                        type="text"
+                                        name="bot-field"
+                                        value={botField}
+                                        onChange={(e: any) => setBotField(e.target.value)}
+                                        style={{ display: 'none' }}
+                                    />
+                                )}
+
+                                <TextInput
+                                    label="Full Name"
+                                    value={contactName}
+                                    onChangeText={setContactName}
+                                    mode="outlined"
+                                    style={s.contactInput}
+                                    outlineColor="#E2E8F0"
+                                    activeOutlineColor="#00695C"
+                                    textColor="#0F172A"
+                                    disabled={formLoading}
+                                />
+
+                                <TextInput
+                                    label="Email Address"
+                                    value={contactEmail}
+                                    onChangeText={setContactEmail}
+                                    mode="outlined"
+                                    keyboardType="email-address"
+                                    autoCapitalize="none"
+                                    style={s.contactInput}
+                                    outlineColor="#E2E8F0"
+                                    activeOutlineColor="#00695C"
+                                    textColor="#0F172A"
+                                    disabled={formLoading}
+                                />
+
+                                <TextInput
+                                    label="Phone Number"
+                                    value={contactPhone}
+                                    onChangeText={setContactPhone}
+                                    mode="outlined"
+                                    keyboardType="phone-pad"
+                                    style={s.contactInput}
+                                    outlineColor="#E2E8F0"
+                                    activeOutlineColor="#00695C"
+                                    textColor="#0F172A"
+                                    disabled={formLoading}
+                                />
+
+                                <View style={s.selectWrapper}>
+                                    <Text style={s.selectLabel}>Who are you?</Text>
+                                    {Platform.OS === 'web' ? (
+                                        // @ts-ignore
+                                        <select
+                                            value={contactRole}
+                                            onChange={(e: any) => setContactRole(e.target.value)}
+                                            style={s.webSelect}
+                                            disabled={formLoading}
+                                        >
+                                            <option value="Family Caregiver">Family Caregiver</option>
+                                            <option value="Memory Care Facility Admin">Memory Care Facility Admin</option>
+                                            <option value="Home Care Agency">Home Care Agency</option>
+                                            <option value="Healthcare Provider">Healthcare Provider</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    ) : (
+                                        <TextInput
+                                            value={contactRole}
+                                            onChangeText={setContactRole}
+                                            mode="outlined"
+                                            outlineColor="#E2E8F0"
+                                            activeOutlineColor="#00695C"
+                                            textColor="#0F172A"
+                                            disabled={formLoading}
+                                        />
+                                    )}
+                                </View>
+
+                                <TextInput
+                                    label="Your Message"
+                                    value={contactMessage}
+                                    onChangeText={setContactMessage}
+                                    mode="outlined"
+                                    multiline
+                                    numberOfLines={4}
+                                    style={[s.contactInput, { height: 120 }]}
+                                    outlineColor="#E2E8F0"
+                                    activeOutlineColor="#00695C"
+                                    textColor="#0F172A"
+                                    disabled={formLoading}
+                                />
+
+                                <Button
+                                    mode="contained"
+                                    onPress={handleContactSubmit}
+                                    loading={formLoading}
+                                    disabled={formLoading}
+                                    style={s.contactSubmitBtn}
+                                    buttonColor="#00695C"
+                                    textColor="#FFF"
+                                    contentStyle={{ height: 48 }}
+                                >
+                                    Send Message
+                                </Button>
+                            </FormWrapper>
+                        )}
+                    </Surface>
+                </View>
+
                 {/* ── CTA Banner ── */}
                 <LinearGradient colors={['#0F172A', '#1E3A8A']}
                     style={[s.ctaBanner, isWide ? s.sectionWide : s.sectionNarrow]}>
@@ -506,6 +769,24 @@ const s = StyleSheet.create({
     // Vision
     vision: { backgroundColor: '#0F172A', paddingVertical: 90, alignItems: 'center', borderRadius: 36, marginTop: 20, marginBottom: 80 },
     visionText: { fontSize: 24, color: '#FFFFFF', textAlign: 'center', lineHeight: 36, maxWidth: 780, fontStyle: 'italic', marginTop: 16 },
+
+    // Contact Section
+    contactSection: { paddingTop: 60, paddingBottom: 80, alignItems: 'center' },
+    contactEyebrow: { color: '#00695C', fontWeight: '800', fontSize: 12, letterSpacing: 2, marginBottom: 12, textAlign: 'center' },
+    contactTitle: { fontSize: 36, fontWeight: '800', color: '#0F172A', textAlign: 'center', marginBottom: 16, letterSpacing: -0.8 },
+    contactBody: { fontSize: 16, color: '#64748B', textAlign: 'center', marginBottom: 36, maxWidth: 600, lineHeight: 24 },
+    contactCard: { width: '100%', maxWidth: 580, backgroundColor: '#FFFFFF', borderRadius: 24, padding: 36, borderWidth: 1, borderColor: '#F1F5F9', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.05, shadowRadius: 15, elevation: 3 },
+    contactInput: { marginBottom: 16, backgroundColor: '#FFFFFF' },
+    selectWrapper: { marginBottom: 20 },
+    selectLabel: { fontSize: 14, fontWeight: '600', color: '#475569', marginBottom: 8 },
+    webSelect: { width: '100%', height: 48, borderRadius: 8, borderColor: '#E2E8F0', borderWidth: 1, paddingHorizontal: 12, fontSize: 15, color: '#0F172A', backgroundColor: '#FFFFFF', ...Platform.select({ web: { outlineStyle: 'none' } as any }) },
+    contactSubmitBtn: { marginTop: 12, borderRadius: 8 },
+    formErrorBox: { backgroundColor: '#FEF2F2', borderColor: '#EF4444', borderWidth: 1, borderRadius: 8, padding: 12, marginBottom: 20 },
+    formErrorText: { color: '#B91C1C', fontSize: 14, fontWeight: '500' },
+    successContainer: { alignItems: 'center', paddingVertical: 40 },
+    successIconWrap: { width: 80, height: 80, borderRadius: 40, backgroundColor: '#E6F4F1', justifyContent: 'center', alignItems: 'center', marginBottom: 24 },
+    successTitle: { fontSize: 24, fontWeight: 'bold', color: '#00695C', marginBottom: 12 },
+    successText: { fontSize: 16, color: '#64748B', textAlign: 'center', lineHeight: 24, maxWidth: 400 },
 
     // CTA Banner
     ctaBanner: { paddingVertical: 72, alignItems: 'center', borderRadius: 28, marginBottom: 80 },
