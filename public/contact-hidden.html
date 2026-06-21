@@ -8,22 +8,22 @@
 <body>
     <!-- Hidden form for Netlify Forms detection crawler -->
     <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="tel" name="phone" />
-        <input type="text" name="role" />
-        <textarea name="message"></textarea>
+        <label>Name: <input type="text" name="name" /></label>
+        <label>Email: <input type="email" name="email" /></label>
+        <label>Phone: <input type="tel" name="phone" /></label>
+        <label>Role: <input type="text" name="role" /></label>
+        <label>Message: <textarea name="message"></textarea></label>
         
         <!-- CRM and Marketing Attribution Fields -->
-        <input type="hidden" name="utm_source" />
-        <input type="hidden" name="utm_medium" />
-        <input type="hidden" name="utm_campaign" />
-        <input type="hidden" name="utm_term" />
-        <input type="hidden" name="utm_content" />
-        <input type="hidden" name="referrer" />
-        <input type="hidden" name="page_url" />
-        <input type="hidden" name="submitted_at" />
-        <input type="hidden" name="lead_source" />
+        <label>UTM Source: <input type="hidden" name="utm_source" /></label>
+        <label>UTM Medium: <input type="hidden" name="utm_medium" /></label>
+        <label>UTM Campaign: <input type="hidden" name="utm_campaign" /></label>
+        <label>UTM Term: <input type="hidden" name="utm_term" /></label>
+        <label>UTM Content: <input type="hidden" name="utm_content" /></label>
+        <label>Referrer: <input type="hidden" name="referrer" /></label>
+        <label>Page URL: <input type="hidden" name="page_url" /></label>
+        <label>Submitted At: <input type="hidden" name="submitted_at" /></label>
+        <label>Lead Source: <input type="hidden" name="lead_source" /></label>
         
         <!-- Honeypot anti-spam protection -->
         <input type="hidden" name="bot-field" />
