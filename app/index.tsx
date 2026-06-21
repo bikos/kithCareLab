@@ -188,6 +188,7 @@ export default function Index() {
                 role: contactRole,
                 message: contactMessage,
                 'bot-field': botField,
+                subject: `New Lead from ${contactName} - ${contactRole}`,
                 utm_source: tracking.utm_source,
                 utm_medium: tracking.utm_medium,
                 utm_campaign: tracking.utm_campaign,
@@ -491,13 +492,21 @@ export default function Index() {
                                 )}
 
                                 {Platform.OS === 'web' && (
-                                    <input
-                                        type="text"
-                                        name="bot-field"
-                                        value={botField}
-                                        onChange={(e: any) => setBotField(e.target.value)}
-                                        style={{ display: 'none' }}
-                                    />
+                                    <>
+                                        <input
+                                            type="text"
+                                            name="bot-field"
+                                            value={botField}
+                                            onChange={(e: any) => setBotField(e.target.value)}
+                                            style={{ display: 'none' }}
+                                        />
+                                        <input
+                                            type="hidden"
+                                            name="subject"
+                                            data-remove-prefix=""
+                                            value={`New Lead from ${contactName} - ${contactRole}`}
+                                        />
+                                    </>
                                 )}
 
                                 <TextInput
