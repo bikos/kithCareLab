@@ -204,7 +204,7 @@ exports.handler = async function (event, context) {
       body: JSON.stringify({
         from: 'KithCare Team <hello@kithcarelab.com>',
         to: [email],
-        reply_to: 'bikrant.gautam.05@gmail.com',
+        reply_to: 'kithcarelab@gmail.com',
         subject: 'Thanks for contacting KithCare!',
         html: emailHtml
       })
