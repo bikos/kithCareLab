@@ -123,6 +123,8 @@ export default function Index() {
     const isWide = width > 768;
     const scrollViewRef = useRef<ScrollView>(null);
 
+    const [contactY, setContactY] = React.useState(3800);
+
     useWebAnimations();
 
     // Contact Form State
@@ -275,12 +277,12 @@ export default function Index() {
                             <Pressable onPress={() => scrollTo(700)}><Text style={s.navLink}>Architecture</Text></Pressable>
                             <Pressable onPress={() => scrollTo(1400)}><Text style={s.navLink}>Features</Text></Pressable>
                             <Pressable onPress={() => scrollTo(2200)}><Text style={s.navLink}>How It Works</Text></Pressable>
-                            <Pressable onPress={() => scrollTo(3800)}><Text style={s.navLink}>Contact</Text></Pressable>
+                            <Pressable onPress={() => scrollTo(contactY)}><Text style={s.navLink}>Contact</Text></Pressable>
                         </View>
                     )}
                     <Button mode="contained" onPress={() => router.push('/auth/login')}
                         style={s.navCta} labelStyle={s.navCtaLabel}>
-                        Get Started
+                        Sign In
                     </Button>
                 </View>
 
@@ -298,9 +300,9 @@ export default function Index() {
                             Whether you're managing care at home or running a memory care facility — KithCare provides peace of mind by keeping everyone connected to the daily progress of your loved ones.
                         </Text>
                         <View style={[s.ctaRow, !isWide && s.ctaRowNarrow]}>
-                            <Button mode="contained" onPress={() => router.push('/auth/login')}
+                            <Button mode="contained" onPress={() => scrollTo(contactY)}
                                 style={s.ctaPrimary} contentStyle={s.ctaContent} labelStyle={s.ctaPrimaryLabel}>
-                                Get Started
+                                Request Access
                             </Button>
                             <Button mode="outlined" onPress={() => scrollTo(700)}
                                 style={s.ctaSecondary} contentStyle={s.ctaContent} labelStyle={s.ctaSecondaryLabel}>
@@ -465,7 +467,10 @@ export default function Index() {
                 </View>
 
                 {/* ── Contact Us Form ── */}
-                <View style={[s.contactSection, isWide ? s.sectionWide : s.sectionNarrow]}>
+                <View 
+                    onLayout={(event) => setContactY(event.nativeEvent.layout.y)}
+                    style={[s.contactSection, isWide ? s.sectionWide : s.sectionNarrow]}
+                >
                     <Text style={s.contactEyebrow}>GET IN TOUCH</Text>
                     <Text style={s.contactTitle}>Have questions? Let's connect.</Text>
                     <Text style={s.contactBody}>
@@ -612,12 +617,12 @@ export default function Index() {
                 <LinearGradient colors={['#0F172A', '#1E3A8A']}
                     style={[s.ctaBanner, isWide ? s.sectionWide : s.sectionNarrow]}>
                     <Text style={s.ctaBannerTitle}>Ready to transform your care journey?</Text>
-                    <Text style={s.ctaBannerSub}>Get started for free — no credit card required.</Text>
-                    <Button mode="contained" onPress={() => router.push('/auth/login')}
+                    <Text style={s.ctaBannerSub}>Contact us to set up your organization and onboard your team.</Text>
+                    <Button mode="contained" onPress={() => scrollTo(contactY)}
                         style={s.bannerBtn}
                         contentStyle={{ height: 58, paddingHorizontal: 36 }}
                         labelStyle={{ fontSize: 17, fontWeight: 'bold', color: '#0F172A' }}>
-                        Create Free Account
+                        Request Onboarding
                     </Button>
                 </LinearGradient>
 
