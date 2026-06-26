@@ -1,9 +1,9 @@
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView, KeyboardAvoidingView, Platform, Image } from 'react-native';
 import { Text, TextInput, Button, Card, HelperText } from 'react-native-paper';
-import { useRouter } from 'expo-router';
+import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useDocumentStore } from '../../store/documentStore';
 import { useCaregiverStore } from '../../store/caregiverStore';
 import * as DocumentPicker from 'expo-document-picker';
@@ -11,46 +11,83 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function AddDocumentScreen() {
     const router = useRouter();
-    const { uploadDocument, loading } = useDocumentStore();
-    const { currentProfile } = useCaregiverStore();
+    const params = useLocalSearchParams();
+    const individualId = params.individualId as string;
+
+    const { uploadDocument, loading: uploadLoading } = useDocumentStore();
+    const { currentProfile, managedProfiles, fetchManagedProfiles, loading: caregiverLoading } = useCaregiverStore();
 
     const [title, setTitle] = useState('');
     const [selectedFile, setSelectedFile] = useState<{ uri: string; name: string; mimeType?: string } | null>(null);
 
+    useEffect(() => {
+        if (managedProfiles.length === 0) {
+            fetchManagedProfiles();
+        }
+    }, [managedProfiles.length]);
+
+    const profile = managedProfiles.find(p => p.id === (individualId || currentProfile?.id));
+
     const pickDocument = async () => {
-        try {
-            const result = await DocumentPicker.getDocumentAsync({
-                type: ['image/*', 'application/pdf'],
-                copyToCacheDirectory: true,
-            });
-
-            if (result.canceled) return;
-
-            const asset = result.assets[0];
-            setSelectedFile({
-                uri: asset.uri,
-                name: asset.name,
-                mimeType: asset.mimeType,
-            });
-
-            // Auto-fill title if empty
-            if (!title) {
-                const nameWithoutExt = asset.name.split('.').slice(0, -1).join('.');
-                setTitle(nameWithoutExt);
+        if (Platform.OS === 'web') {
+            try {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*,application/pdf';
+                input.onchange = (e) => {
+                    const file = (e.target as HTMLInputElement).files?.[0];
+                    if (file) {
+                        setSelectedFile({
+                            uri: URL.createObjectURL(file),
+                            name: file.name,
+                            mimeType: file.type,
+                        });
+                        // Auto-fill title if empty
+                        if (!title) {
+                            const nameWithoutExt = file.name.split('.').slice(0, -1).join('.');
+                            setTitle(nameWithoutExt);
+                        }
+                    }
+                };
+                input.click();
+            } catch (err) {
+                console.error('Error picking document on web:', err);
             }
-        } catch (err) {
-            console.error('Error picking document:', err);
+        } else {
+            try {
+                const result = await DocumentPicker.getDocumentAsync({
+                    type: ['image/*', 'application/pdf'],
+                    copyToCacheDirectory: true,
+                });
+
+                if (result.canceled) return;
+
+                const asset = result.assets[0];
+                setSelectedFile({
+                    uri: asset.uri,
+                    name: asset.name,
+                    mimeType: asset.mimeType,
+                });
+
+                // Auto-fill title if empty
+                if (!title) {
+                    const nameWithoutExt = asset.name.split('.').slice(0, -1).join('.');
+                    setTitle(nameWithoutExt);
+                }
+            } catch (err) {
+                console.error('Error picking document:', err);
+            }
         }
     };
 
     const handleSubmit = async () => {
-        if (!title.trim() || !selectedFile) {
-            alert('Please provide a title and select a document');
+        if (!title.trim() || !selectedFile || !profile) {
+            alert('Please provide a title, select a document, and select a profile');
             return;
         }
 
         try {
-            await uploadDocument(title, 'Medical', selectedFile.uri);
+            await uploadDocument(title, 'Medical', selectedFile.uri, profile.id, selectedFile.name);
             router.back();
         } catch (error) {
             console.error('Error uploading document:', error);
@@ -58,9 +95,17 @@ export default function AddDocumentScreen() {
         }
     };
 
-    if (!currentProfile) {
+    if (caregiverLoading && !profile) {
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+                <Text>Loading patient profile...</Text>
+            </View>
+        );
+    }
+
+    if (!profile) {
+        return (
+            <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
                 <Text>No individual selected</Text>
             </View>
         );
@@ -76,7 +121,7 @@ export default function AddDocumentScreen() {
         >
             <ScrollView style={styles.formContainer} contentContainerStyle={styles.formContent}>
                 <Text variant="bodyMedium" style={styles.subtitle}>
-                    Upload document for <Text style={styles.patientName}>{currentProfile.full_name}</Text>
+                    Upload document for <Text style={styles.patientName}>{profile.full_name}</Text>
                 </Text>
                 <Card style={styles.sectionCard}>
                     <Card.Content>
@@ -136,11 +181,11 @@ export default function AddDocumentScreen() {
                 <Button
                     mode="contained"
                     onPress={handleSubmit}
-                    loading={loading}
-                    disabled={!title || !selectedFile || loading}
+                    loading={uploadLoading}
+                    disabled={!title || !selectedFile || uploadLoading}
                     style={styles.saveBtn}
                 >
-                    {loading ? 'Uploading...' : 'Upload Document'}
+                    {uploadLoading ? 'Uploading...' : 'Upload Document'}
                 </Button>
                 <Button mode="text" onPress={() => router.back()}>
                     Cancel
