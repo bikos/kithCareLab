@@ -14,7 +14,7 @@ interface DocumentState {
     documents: Document[];
     loading: boolean;
     fetchDocuments: () => Promise<void>;
-    uploadDocument: (title: string, category: string, fileUri: string) => Promise<void>;
+    uploadDocument: (title: string, category: string, fileUri: string, individualId?: string, originalName?: string) => Promise<void>;
 }
 
 export const useDocumentStore = create<DocumentState>((set, get) => ({
@@ -43,17 +43,26 @@ export const useDocumentStore = create<DocumentState>((set, get) => ({
             set({ loading: false });
         }
     },
-    uploadDocument: async (title, category, fileUri) => {
+    uploadDocument: async (title, category, fileUri, individualId, originalName) => {
         try {
             const { currentProfile } = require('./caregiverStore').useCaregiverStore.getState();
-            if (!currentProfile) throw new Error('No profile selected');
+            const targetProfileId = individualId || currentProfile?.id;
+            if (!targetProfileId) throw new Error('No profile selected');
 
             const { data: { user } } = await supabase.auth.getUser();
             if (!user) throw new Error('No user logged in');
 
             // Determine file extension and type
-            const fileExt = fileUri.split('.').pop()?.toLowerCase() || 'jpg';
-            const fileName = `${currentProfile.id}/${Date.now()}.${fileExt}`;
+            let fileExt = 'jpg';
+            const nameToUse = originalName || fileUri;
+            if (nameToUse.includes('.')) {
+                fileExt = nameToUse.split('.').pop()?.toLowerCase() || 'jpg';
+            }
+            // If the URL is a blob, make sure we clean up any query params or hashes in split
+            if (fileExt.includes('?')) fileExt = fileExt.split('?')[0];
+            if (fileExt.includes('#')) fileExt = fileExt.split('#')[0];
+
+            const fileName = `${targetProfileId}/${Date.now()}.${fileExt}`;
             const filePath = `${fileName}`;
 
             // Fetch the file and convert to ArrayBuffer
@@ -86,7 +95,7 @@ export const useDocumentStore = create<DocumentState>((set, get) => ({
                 .from('documents')
                 .insert([
                     {
-                        user_id: currentProfile.id,
+                        user_id: targetProfileId,
                         title,
                         category,
                         file_url: publicUrl,
