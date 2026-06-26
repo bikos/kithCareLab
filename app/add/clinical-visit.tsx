@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ScrollView, KeyboardAvoidingView, Platform, Alert, TouchableOpacity } from 'react-native';
 import { Text, TextInput, Button, Card, HelperText } from 'react-native-paper';
 import { useRouter, useLocalSearchParams } from 'expo-router';
@@ -12,7 +12,8 @@ export default function AddClinicalVisitScreen() {
     const clinicianId = params.clinicianId as string;
     const individualId = params.individualId as string;
 
-    const { addVisit, loading } = useClinicianStore();
+    const { addVisit, fetchClinicians, clinicians, loading } = useClinicianStore();
+    const [selectedClinicianId, setSelectedClinicianId] = useState(clinicianId || '');
 
     const [form, setForm] = useState({
         visitDate: new Date(),
@@ -24,9 +25,17 @@ export default function AddClinicalVisitScreen() {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showFollowUpPicker, setShowFollowUpPicker] = useState(false);
 
+    useEffect(() => {
+        if (individualId && !clinicianId) {
+            fetchClinicians(individualId);
+        }
+    }, [individualId, clinicianId]);
+
     const handleSubmit = async () => {
-        if (!clinicianId || !individualId) {
-            Alert.alert('Error', 'Missing required information');
+        const targetClinicianId = clinicianId || selectedClinicianId;
+
+        if (!targetClinicianId || !individualId) {
+            Alert.alert('Error', 'Missing required information. Please select a clinician.');
             return;
         }
 
@@ -37,7 +46,7 @@ export default function AddClinicalVisitScreen() {
 
         try {
             await addVisit({
-                clinician_id: clinicianId,
+                clinician_id: targetClinicianId,
                 individual_id: individualId,
                 visit_date: form.visitDate.toISOString(),
                 reason: form.reason,
@@ -64,6 +73,57 @@ export default function AddClinicalVisitScreen() {
 
                 <Card style={styles.card}>
                     <Card.Content style={styles.cardContent}>
+
+                        {/* Clinician Selector (when clinicianId is not provided in URL) */}
+                        {!clinicianId && (
+                            <View style={styles.clinicianSection}>
+                                <Text variant="labelMedium" style={styles.label}>Select Clinician *</Text>
+                                {clinicians.length === 0 ? (
+                                    <View style={styles.noCliniciansContainer}>
+                                        <Text style={styles.noCliniciansText}>No clinicians registered for this individual.</Text>
+                                        <Button 
+                                            mode="outlined" 
+                                            onPress={() => router.push(`/add/clinician?individualId=${individualId}`)}
+                                            style={styles.addClinicianBtn}
+                                            textColor="#00695C"
+                                        >
+                                            Add Clinician First
+                                        </Button>
+                                    </View>
+                                ) : (
+                                    <View style={styles.clinicianGrid}>
+                                        {clinicians.map((c) => {
+                                             const isSelected = selectedClinicianId === c.id;
+                                             return (
+                                                 <TouchableOpacity
+                                                     key={c.id}
+                                                     style={[
+                                                         styles.clinicianOption,
+                                                         isSelected && styles.clinicianOptionSelected
+                                                     ]}
+                                                     onPress={() => setSelectedClinicianId(c.id)}
+                                                 >
+                                                     <Text style={[
+                                                         styles.clinicianName,
+                                                         isSelected && styles.clinicianNameSelected
+                                                     ]}>
+                                                         {c.name}
+                                                     </Text>
+                                                     {c.specialty ? (
+                                                         <Text style={[
+                                                             styles.clinicianSpecialty,
+                                                             isSelected && styles.clinicianSpecialtySelected
+                                                         ]}>
+                                                             {c.specialty}
+                                                         </Text>
+                                                     ) : null}
+                                                 </TouchableOpacity>
+                                             );
+                                        })}
+                                    </View>
+                                )}
+                            </View>
+                        )}
 
                         {/* Visit Date */}
                         <TouchableOpacity onPress={() => setShowDatePicker(true)} style={styles.dateInput}>
@@ -194,6 +254,57 @@ const styles = StyleSheet.create({
     label: {
         color: '#00695C',
         marginBottom: 4,
+    },
+    clinicianSection: {
+        marginBottom: 8,
+    },
+    noCliniciansContainer: {
+        padding: 16,
+        backgroundColor: '#F8FAF9',
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#E0E0E0',
+        alignItems: 'center',
+    },
+    noCliniciansText: {
+        color: '#666',
+        marginBottom: 12,
+        textAlign: 'center',
+        fontSize: 14,
+    },
+    addClinicianBtn: {
+        borderColor: '#00695C',
+    },
+    clinicianGrid: {
+        gap: 8,
+        marginTop: 4,
+    },
+    clinicianOption: {
+        padding: 12,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#E2E8F0',
+        backgroundColor: '#FFFFFF',
+    },
+    clinicianOptionSelected: {
+        borderColor: '#00695C',
+        backgroundColor: '#E0F2F1',
+    },
+    clinicianName: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#0F172A',
+    },
+    clinicianNameSelected: {
+        color: '#00695C',
+    },
+    clinicianSpecialty: {
+        fontSize: 13,
+        color: '#64748B',
+        marginTop: 2,
+    },
+    clinicianSpecialtySelected: {
+        color: '#004D40',
     },
     footer: {
         padding: 16,
