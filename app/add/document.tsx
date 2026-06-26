@@ -18,28 +18,54 @@ export default function AddDocumentScreen() {
     const [selectedFile, setSelectedFile] = useState<{ uri: string; name: string; mimeType?: string } | null>(null);
 
     const pickDocument = async () => {
-        try {
-            const result = await DocumentPicker.getDocumentAsync({
-                type: ['image/*', 'application/pdf'],
-                copyToCacheDirectory: true,
-            });
-
-            if (result.canceled) return;
-
-            const asset = result.assets[0];
-            setSelectedFile({
-                uri: asset.uri,
-                name: asset.name,
-                mimeType: asset.mimeType,
-            });
-
-            // Auto-fill title if empty
-            if (!title) {
-                const nameWithoutExt = asset.name.split('.').slice(0, -1).join('.');
-                setTitle(nameWithoutExt);
+        if (Platform.OS === 'web') {
+            try {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*,application/pdf';
+                input.onchange = (e) => {
+                    const file = (e.target as HTMLInputElement).files?.[0];
+                    if (file) {
+                        setSelectedFile({
+                            uri: URL.createObjectURL(file),
+                            name: file.name,
+                            mimeType: file.type,
+                        });
+                        // Auto-fill title if empty
+                        if (!title) {
+                            const nameWithoutExt = file.name.split('.').slice(0, -1).join('.');
+                            setTitle(nameWithoutExt);
+                        }
+                    }
+                };
+                input.click();
+            } catch (err) {
+                console.error('Error picking document on web:', err);
             }
-        } catch (err) {
-            console.error('Error picking document:', err);
+        } else {
+            try {
+                const result = await DocumentPicker.getDocumentAsync({
+                    type: ['image/*', 'application/pdf'],
+                    copyToCacheDirectory: true,
+                });
+
+                if (result.canceled) return;
+
+                const asset = result.assets[0];
+                setSelectedFile({
+                    uri: asset.uri,
+                    name: asset.name,
+                    mimeType: asset.mimeType,
+                });
+
+                // Auto-fill title if empty
+                if (!title) {
+                    const nameWithoutExt = asset.name.split('.').slice(0, -1).join('.');
+                    setTitle(nameWithoutExt);
+                }
+            } catch (err) {
+                console.error('Error picking document:', err);
+            }
         }
     };
 
@@ -50,7 +76,7 @@ export default function AddDocumentScreen() {
         }
 
         try {
-            await uploadDocument(title, 'Medical', selectedFile.uri);
+            await uploadDocument(title, 'Medical', selectedFile.uri, undefined, selectedFile.name);
             router.back();
         } catch (error) {
             console.error('Error uploading document:', error);
