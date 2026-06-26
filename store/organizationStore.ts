@@ -290,14 +290,20 @@ export const useOrganizationStore = create<OrganizationState>((set, get) => ({
         const organization = get().organization;
         if (!organization) throw new Error('No organization selected');
 
-        // 1. Create Pending Invite Record in DB
+        // 1. Create/Update Pending Invite Record in DB
         const { error: dbError } = await supabase
             .from('organization_invites')
-            .insert({
-                organization_id: organization.id,
-                email,
-                role
-            });
+            .upsert(
+                {
+                    organization_id: organization.id,
+                    email,
+                    role,
+                    status: 'pending' // Reset to pending if it existed
+                },
+                {
+                    onConflict: 'organization_id,email'
+                }
+            );
 
         if (dbError) throw dbError;
 
@@ -409,13 +415,31 @@ export const useOrganizationStore = create<OrganizationState>((set, get) => ({
     },
 
     deleteMember: async (memberId: string) => {
-        // Delete the organization member (this removes them from the org but not their profile)
+        // 1. Find the member to get their email address before deleting
+        const member = get().members.find(m => m.id === memberId);
+        const email = member?.profile?.email;
+
+        // 2. Delete the organization member (this removes them from the org but not their profile)
         const { error } = await supabase
             .from('organization_members')
             .delete()
             .eq('id', memberId);
 
         if (error) throw error;
+
+        // 3. Delete from organization_invites to clean up the invite
+        if (email) {
+            const org = get().organization;
+            if (org) {
+                await supabase
+                    .from('organization_invites')
+                    .delete()
+                    .eq('email', email)
+                    .eq('organization_id', org.id);
+            }
+        }
+
         await get().fetchMembers();
+        await get().fetchInvites();
     }
 }));
