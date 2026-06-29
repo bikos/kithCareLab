@@ -261,17 +261,20 @@ export default function ProfileScreen() {
                     <Divider style={styles.divider} />
 
                     <List.Item
+                        title="Full Name"
+                        description={caregiverProfile?.full_name || 'Not set'}
+                        left={props => <List.Icon {...props} icon="account" />}
+                    />
+                    <List.Item
                         title="Email"
                         description={user?.email}
                         left={props => <List.Icon {...props} icon="email" />}
                     />
-                    {caregiverProfile?.phone && (
-                        <List.Item
-                            title="Phone"
-                            description={caregiverProfile.phone}
-                            left={props => <List.Icon {...props} icon="phone" />}
-                        />
-                    )}
+                    <List.Item
+                        title="Phone"
+                        description={caregiverProfile?.phone || 'Not set'}
+                        left={props => <List.Icon {...props} icon="phone" />}
+                    />
                     <List.Item
                         title="Role"
                         description="Primary Caregiver"

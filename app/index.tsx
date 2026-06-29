@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { Text, Button, Surface, TextInput, HelperText } from 'react-native-paper';
 import { useRouter } from 'expo-router';
-import Head from 'expo-router/head';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -256,26 +255,7 @@ export default function Index() {
     const badgeRef = useWebClass('kc-pulse');
 
     return (
-        <>
-            <Head>
-                <title>KithCare | Modern Caregiver &amp; Client Management Platform</title>
-                <meta name="description" content="KithCare simplifies client management, caregiver scheduling, and clinical logs for memory care facilities and home care agencies." />
-                
-                {/* Open Graph / Facebook */}
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://kithcarelab.com/" />
-                <meta property="og:title" content="KithCare | Modern Caregiver &amp; Client Management Platform" />
-                <meta property="og:description" content="Whether you're managing care at home or running a memory care facility — KithCare provides peace of mind by keeping everyone connected to the daily progress of your loved ones." />
-                <meta property="og:image" content="https://kithcarelab.com/og-image.png" />
-                
-                {/* Twitter */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:url" content="https://kithcarelab.com/" />
-                <meta name="twitter:title" content="KithCare | Modern Caregiver &amp; Client Management Platform" />
-                <meta name="twitter:description" content="Whether you're managing care at home or running a memory care facility — KithCare provides peace of mind by keeping everyone connected to the daily progress of your loved ones." />
-                <meta name="twitter:image" content="https://kithcarelab.com/og-image.png" />
-            </Head>
-            <View style={s.root}>
+        <View style={s.root}>
             <ScrollView
                 ref={scrollViewRef}
                 contentContainerStyle={s.scroll}
@@ -676,7 +656,6 @@ export default function Index() {
 
             </ScrollView>
         </View>
-        </>
     );
 }
 
