@@ -30,7 +30,8 @@
       "icon": "./assets/images/icon.png"
     },
     "web": {
-      "favicon": "./assets/icon.png"
+      "favicon": "./assets/icon.png",
+      "output": "static"
     },
     "plugins": [
       "expo-router",

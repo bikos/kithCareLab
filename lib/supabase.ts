@@ -18,19 +18,30 @@ const ExpoSecureStoreAdapter = {
     },
 };
 
+const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+
+const dummyAdapter = {
+    getItem: (key: string) => Promise.resolve(null),
+    setItem: (key: string, value: string) => Promise.resolve(),
+    removeItem: (key: string) => Promise.resolve(),
+};
+
 const storageAdapter = Platform.OS === 'web'
-    ? {
-        getItem: (key: string) => {
-            return Promise.resolve(localStorage.getItem(key));
-        },
-        setItem: (key: string, value: string) => {
-            return Promise.resolve(localStorage.setItem(key, value));
-        },
-        removeItem: (key: string) => {
-            return Promise.resolve(localStorage.removeItem(key));
-        },
-    }
+    ? (isBrowser
+        ? {
+            getItem: (key: string) => {
+                return Promise.resolve(localStorage.getItem(key));
+            },
+            setItem: (key: string, value: string) => {
+                return Promise.resolve(localStorage.setItem(key, value));
+            },
+            removeItem: (key: string) => {
+                return Promise.resolve(localStorage.removeItem(key));
+            },
+        }
+        : dummyAdapter)
     : ExpoSecureStoreAdapter;
+
 
 // Capture intent before Supabase client potentially strips the URL hash
 export const isInviteFlow = Platform.OS === 'web' &&
